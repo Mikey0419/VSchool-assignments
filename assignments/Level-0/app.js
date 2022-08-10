@@ -7,7 +7,7 @@ $(document).ready(function() {
     let projData = {
         cookies: cookiesEnabled,
         language: navigator.language,
-        user: "Mikey",
+        user: "Michael Hardin",
         projName: "Capstone Project",
     };
 
