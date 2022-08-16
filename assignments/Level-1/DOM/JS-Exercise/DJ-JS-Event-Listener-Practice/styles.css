@@ -1,0 +1,28 @@
+.blue {
+    background-color: aqua;
+}
+.red {
+    background-color: tomato;
+}
+.yellow {
+    background-color: #f7f428;
+}
+.green {
+    background-color: rgb(104, 165, 104);
+}
+.orange {
+    background-color: orange;
+}
+.white {
+    background-color: white;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+    /* background-color: white; */
+    position: absolute;
+}
