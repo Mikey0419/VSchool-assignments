@@ -1,0 +1,13 @@
+.red {
+    color: red;
+    font-weight: 400;
+}
+
+.floating {
+    position: absolute;
+    left: 10px;
+    top: 70px;
+    font-size: 48px;
+    transform: rotateZ(45deg);
+    text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
