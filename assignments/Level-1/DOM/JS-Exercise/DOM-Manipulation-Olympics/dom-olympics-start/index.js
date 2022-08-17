@@ -100,4 +100,5 @@ document.addEventListener("submit", function(e) {
     //(dropdownValue.value === "Pink & Blue") ? 
 
     document.querySelector(".messages").append(newDiv);
+    inputValue.value = "";
 })
