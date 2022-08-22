@@ -17,8 +17,8 @@
         </div>
         <form name="addItem" id="add-todo">
             <label class="label" for="title">Item name</label>
-            <input class="input" name="title" id="title" />
-            <button>submit</button>
+            <input class="input" name="title" id="title" required/>
+            <button class="add">Add item</button>
         </form>
         <div class="todos">
             <div class="title-bar">
@@ -28,20 +28,19 @@
             <ul id="list">
                 <li>
                     <div>Milk</div>
-                    <button>edit</button>
-                    <button>X</button>
+                    <button class="edit">edit</button>
+                    <button class="delete" id="remove">X</button>
                 </li>
                 <li>
                     <div>Cheerios</div>
-                    <button>edit</button>
-                    <button>X</button>
+                    <button class="edit">edit</button>
+                    <button class="delete" id="remove">X</button>
                 </li>
                 <li>
                     <div>2 Goats</div>
-                    <button>edit</button>
-                    <button>X</button>
+                    <button class="edit">edit</button>
+                    <button class="delete" id="remove">X</button>
                 </li>  
-                <hr>              
             </ul>
         </div>
     </div>
