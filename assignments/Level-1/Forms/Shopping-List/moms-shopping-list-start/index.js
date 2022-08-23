@@ -1,14 +1,15 @@
 const list = document.getElementById("list");
 const form = document["addItem"];
-const items = document.querySelectorAll('li div');
+const items = document.querySelectorAll('li div'); //future consideration: placing DOM elements into an array
 const saveButton = document.querySelector('.edit');
 
 const createInput = e => {
-    console.log(e.target.parentNode);
-    var inputElement = document.createElement("INPUT");
+    console.log(e.target.parentNode, " is being edited.");
+
+    var inputElement = document.createElement("input");
     inputElement.setAttribute("type", "text");
 
-    alert(e.target.parentNode.childNodes[1].textContent);
+    //e.target.parentNode.childNodes[1].textContent gives the <div> text 
 
     var divElement = e.target.parentNode.childNodes[1];
     divElement.hidden = true;
@@ -41,12 +42,13 @@ form.addEventListener("submit", (e) => {
 list.addEventListener("click", (e) => {
     if (e.target.matches('.delete')) {
         console.log(e.target.parentNode, ": deleted.");
-        list.removeChild(e.target.parentNode); }
+        list.removeChild(e.target.parentNode); 
+    }
     
     if (e.target.matches('.edit')) {
         if (e.target.textContent == "edit") {
             e.target.textContent = "save";
-            createInput(e); }
-        else { console.log("saved."); }
+            createInput(e); 
+        } else { console.log("saved."); }
     }
 })
