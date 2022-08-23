@@ -1,12 +1,28 @@
 const list = document.getElementById("list");
 const form = document["addItem"];
 const items = document.querySelectorAll('li div');
-console.log(items);
+const saveButton = document.querySelector('.edit');
 
-const itemArray = [...items];
+const createInput = e => {
+    console.log(e.target.parentNode);
+    var inputElement = document.createElement("INPUT");
+    inputElement.setAttribute("type", "text");
 
-for (let i = 0; i<items.length; i++) {
-    console.log(itemArray[i].innerHTML);
+    alert(e.target.parentNode.childNodes[1].textContent);
+
+    var divElement = e.target.parentNode.childNodes[1];
+    divElement.hidden = true;
+
+    inputElement.value = divElement.textContent;
+    e.target.parentNode.prepend(inputElement);
+
+    inputElement.addEventListener("blur", () => {
+    divElement.textContent = inputElement.value;
+    
+    divElement.hidden = false;
+    e.target.parentNode.removeChild(inputElement);
+    saveButton.textContent = "edit";
+    })
 }
 
 form.addEventListener("submit", (e) => {
@@ -26,4 +42,11 @@ list.addEventListener("click", (e) => {
     if (e.target.matches('.delete')) {
         console.log(e.target.parentNode, ": deleted.");
         list.removeChild(e.target.parentNode); }
+    
+    if (e.target.matches('.edit')) {
+        if (e.target.textContent == "edit") {
+            e.target.textContent = "save";
+            createInput(e); }
+        else { console.log("saved."); }
+    }
 })
