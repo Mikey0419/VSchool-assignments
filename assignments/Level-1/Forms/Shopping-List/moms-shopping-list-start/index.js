@@ -18,11 +18,11 @@ const createInput = e => {
     e.target.parentNode.prepend(inputElement);
 
     inputElement.addEventListener("blur", () => {
-    divElement.textContent = inputElement.value;
+        divElement.textContent = inputElement.value;
     
-    divElement.hidden = false;
-    e.target.parentNode.removeChild(inputElement);
-    saveButton.textContent = "edit";
+        divElement.hidden = false;
+        e.target.parentNode.removeChild(inputElement);
+        e.target.textContent = 'edit';
     })
 }
 
@@ -39,7 +39,7 @@ form.addEventListener("submit", (e) => {
     form.title.value = "";
 })
 
-list.addEventListener("click", (e) => {
+list.addEventListener("mousedown", (e) => {
     if (e.target.matches('.delete')) {
         console.log(e.target.parentNode, ": deleted.");
         list.removeChild(e.target.parentNode); 
@@ -49,6 +49,8 @@ list.addEventListener("click", (e) => {
         if (e.target.textContent == "edit") {
             e.target.textContent = "save";
             createInput(e); 
-        } else { console.log("saved."); }
+        } else { 
+            e.target.textContent = "save";
+            console.log("saved."); }
     }
 })
