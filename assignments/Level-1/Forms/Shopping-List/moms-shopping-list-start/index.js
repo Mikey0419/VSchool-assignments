@@ -33,9 +33,7 @@ form.addEventListener("submit", (e) => {
 
     var listElement = document.createElement("li");
 
-    var listElementContent = "<div>" + form.title.value + "</div> \
-    <button class='edit'>edit</button> \
-    <button class='delete' id='remove'>X</button>";
+    var listElementContent = "<div>" + form.title.value + "</div><button class='edit'>edit</button><button class='delete' id='remove'>X</button>";
 
     listElement.innerHTML = listElementContent;
 
