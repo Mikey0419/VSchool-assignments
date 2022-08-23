@@ -11,7 +11,9 @@ const createInput = e => {
 
     //e.target.parentNode.childNodes[1].textContent gives the <div> text 
 
-    var divElement = e.target.parentNode.childNodes[1];
+    //var divElement = e.target.parentNode.childNodes[1];
+    var divElement = e.target.parentNode.childNodes[0];
+
     divElement.hidden = true;
 
     inputElement.value = divElement.textContent;
@@ -29,13 +31,24 @@ const createInput = e => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    var listElement = document.createElement("li");
+
+    var listElementContent = "<div>" + form.title.value + "</div> \
+    <button class='edit'>edit</button> \
+    <button class='delete' id='remove'>X</button>";
+
+    listElement.innerHTML = listElementContent;
+
     var newItem = "<li> \
     <div>" + form.title.value + "</div> \
     <button class='edit'>edit</button> \
     <button class='delete' id='remove'>X</button> \
-    </li>"
+    </li>";
 
-    list.innerHTML += newItem;
+    //list.innerHTML += newItem;
+
+    list.prepend(listElement);
+
     form.title.value = "";
 })
 
