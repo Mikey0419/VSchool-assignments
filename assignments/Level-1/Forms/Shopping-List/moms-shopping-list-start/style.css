@@ -36,6 +36,7 @@ body {
 #list {
     flex-direction: column;
     display:list-item;
+    list-style-type: none;
 }
 
 #list > li{
