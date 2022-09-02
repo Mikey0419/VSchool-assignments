@@ -1,6 +1,6 @@
 const capitalizeAndLowercase = (str) => {
-    var str1 = str.toUpperCase();
-    var str2 = str.toLowerCase();
+    let str1 = str.toUpperCase();
+    let str2 = str.toLowerCase();
     str1 += str2;
 
     console.log(str1);
@@ -9,27 +9,27 @@ const capitalizeAndLowercase = (str) => {
 capitalizeAndLowercase("vschool");
 
 findMiddleIndex = (str) => {
-    var index = Math.floor(str.length / 2);
+    let index = Math.floor(str.length / 2);
     console.log(index, "\n");
 }
 
 findMiddleIndex("Hello");
 
 const returnFirstHalf = (str) => {
-    var strLength = Math.floor(str.length / 2);
-    var halfStr = str.slice(0, strLength);
+    let strLength = Math.floor(str.length / 2);
+    let halfStr = str.slice(0, strLength);
     console.log(halfStr, "\n");
 }
 
 returnFirstHalf("Michael Hardin");
 
 const capilizeAndLowercase = (str) => {
-    var strLen = Math.floor(str.length / 2);
-    var str1 = str.slice(0, strLen);
-    var finalStr = str1.toUpperCase();
+    let strLen = Math.floor(str.length / 2);
+    let str1 = str.slice(0, strLen);
+    let finalStr = str1.toUpperCase();
 
-    var str2 = "";
-    var spaces = str.indexOf(" ");
+    let str2 = "";
+    let spaces = str.indexOf(" ");
     str2 = (spaces !== -1) ? str.slice(spaces, str.length) : str.slice(strLen);
 
     finalStr += str2;
