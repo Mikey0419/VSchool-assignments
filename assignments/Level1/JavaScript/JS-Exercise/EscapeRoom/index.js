@@ -5,10 +5,11 @@ let isAlive = true;
 
 options = ['🕳 Put hand in a hole', '🔑 Find the key', '🚪 Open the door'];
 
+console.clear();
 console.log("Welcome to Escape Room!  You will need to find the 🔑 to unlock the 🚪.\n\n** NOTE: Try not to put your hand in the 🕳 ...\n\n");
 
 while (isAlive) {
-    
+
     index = readLine.keyInSelect(options, 'Please enter the operation to perform: '); //returns index starting with 0; 'CANCEL'[0] = -1
     
     switch (index) {
