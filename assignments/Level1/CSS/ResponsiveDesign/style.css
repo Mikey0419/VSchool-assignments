@@ -1,0 +1,22 @@
+* { /* Resets and Default styling */
+    margin: 0;
+    padding: 0;
+    font-family:'Fira Code', Courier, monospace;
+    font-size: 16px;
+}
+
+#box1 {
+    background-color: green;
+    border: 2px solid black;
+    width: 600px;
+}
+
+@media (max-width: 600px) {
+    #box1 {
+        font-family:Georgia, 'Times New Roman', Times, serif;
+        background-color:aqua;
+        border: 2px dashed yellowgreen;
+        font-size: 24px;
+        width: 200px;
+    }
+}
