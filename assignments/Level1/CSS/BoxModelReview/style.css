@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Code', 'Fira Code Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#box1 {
+    border: 2px solid green;
+    padding: 10px;
+    margin: 2px;
+    width: 300px;
+}
+
+#box2 {
+    border: 2px solid blue; /* size style color */
+    padding: 20px;
+    margin: 0 0 0 20px;
+    width: 200px;
+}
