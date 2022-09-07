@@ -47,6 +47,15 @@ a:hover {
     background-position: center;
 }
 
+.contact {
+    background-image: url("./building1.jpeg");
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 p {
     text-align: justify;
     text-indent: 100px;;
@@ -132,6 +141,18 @@ li:hover {
     .header {
         font-size: 1.5rem;
         word-wrap: normal;
+    }
+    .content {
+        width: 65%;
+        top: 80px;
+        padding: 60px 60px 50px 60px;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.8rem;
+        top: -30px;
     }
 }
 
