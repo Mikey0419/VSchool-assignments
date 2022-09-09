@@ -11,9 +11,10 @@ for (let i = 1; i < 101; i++) {
         if (i % 5 === 0) {
             numArr.push("FIZZBUZZ");
             ++count["fizzbuzz"];
+        } else {
+            numArr.push("Fizz");
+            ++count["fizz"];
         }
-        numArr.push("Fizz");
-        ++count["fizz"];
     } else if (i % 5 === 0) {
         numArr.push("Buzz");
         ++count["buzz"];
