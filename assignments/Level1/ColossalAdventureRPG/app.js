@@ -38,7 +38,7 @@ let alive = true;
 let lifeArr = "❤️ ❤️ ❤️ ❤️ ❤️";
 const enemies = ["Thanos", "Gorr the God Slayer", "Mysterio"];
 const fightOrRun = ["Fight", "Run!"];
-const walkOrPrint = ["[W]alk", "[P]rint inventory"];
+const walkOrPrint = ["Walk", "Print inventory"];
 
 const introMessage = () => {
     console.clear();
@@ -95,12 +95,33 @@ introMessage();
 splashPrompt();
 
 while (alive) {
-    readLine.prompt();
-    let whichEnemy = getRndInteger(0, 3);
     let rndNum = Math.floor(Math.random() * 100);
-    console.log(rndNum);
 
-    HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());
-    splashPrompt();
-    console.log(enemies[whichEnemy]);
+    let choice = readLine.keyInSelect(walkOrPrint, "Please select an option:");
+
+    switch (choice) {
+        //0 = walk, 1 = print inventory
+        case 0:
+            //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
+            let randEnemy = Math.floor(Math.random() * 100);
+            if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
+                splashPrompt();
+                //choose an enemy
+                let whichEnemy = getRndInteger(0, 3);
+                console.log(`${enemies[whichEnemy]} is here!  What would you like to do?`);
+                let stayRun = readLine.keyInSelect(fightOrRun);
+            } else {
+                splashPrompt();
+                console.log("Nothing crazy going on right now\n");
+            }
+            break;
+        case 1:
+            splashPrompt();
+            console.log(itemsArray);
+            break;
+        case -1:
+            break;
+    }
+
+    /*HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());*/
 }
