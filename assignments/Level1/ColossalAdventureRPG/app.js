@@ -20,6 +20,9 @@
 
 const readLine = require("readline-sync")
 
+const red = '\x1b[31m';
+const resetC = '\x1b[0m';
+
 const msg = "\
   ██████  ██████  ██       ██████  ███████ ███████  █████  ██          ██████  ██████   ██████ \n \
 ██      ██    ██ ██      ██    ██ ██      ██      ██   ██ ██          ██   ██ ██   ██ ██      \n \
@@ -39,7 +42,7 @@ const walkOrPrint = ["[W]alk", "[P]rint inventory"];
 
 const introMessage = () => {
     console.clear();
-    console.log(msg, "\n\nPlease enter your name: ");
+    console.log(`${red}${msg}${resetC}`, "\n\nPlease enter your name: ");
     name = readLine.prompt();
 }
 
@@ -48,9 +51,10 @@ const adjustHP = (addYesNo, adjNum) => {
     newHP = (addYesNo === false) ? HP - (HP * adjNum): HP + (HP * adjNum);
 
     if(Math.floor(newHP) === 0) {
+        console.clear();
         console.log("You died!");
         alive = false;
-        lifeArr = "💀💀💀💀💀";
+        lifeArr = "" + `${red}You died!!${resetC}` + "\t💀💀💀💀💀";
         return 0; }
 
     switch (Math.floor(newHP) > 0) {
@@ -79,7 +83,8 @@ const adjustHP = (addYesNo, adjNum) => {
 }
 
 const splashPrompt = () => {
-    console.log("\t\t\t\t❮",name, "❯\t\tHP [", HP, "]  ", lifeArr, "\n\n");
+    console.clear();
+    console.log("\t\t\t\t❮",name, "❯\tHP [", HP, "]  ", lifeArr, "\n");
 }
 
 introMessage();
