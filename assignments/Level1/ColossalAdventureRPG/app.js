@@ -46,6 +46,10 @@ const introMessage = () => {
     name = readLine.prompt();
 }
 
+const getRndInteger = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 const adjustHP = (addYesNo, adjNum) => {
     let newHP = 0;
     newHP = (addYesNo === false) ? HP - (HP * adjNum): HP + (HP * adjNum);
@@ -92,9 +96,11 @@ splashPrompt();
 
 while (alive) {
     readLine.prompt();
+    let whichEnemy = getRndInteger(0, 3);
     let rndNum = Math.floor(Math.random() * 100);
     console.log(rndNum);
 
     HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());
     splashPrompt();
+    console.log(enemies[whichEnemy]);
 }
