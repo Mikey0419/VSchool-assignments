@@ -83,7 +83,6 @@ const adjustHP = (addYesNo, adjNum) => {
 }
 
 const splashPrompt = () => {
-    console.clear();
     console.log("\t\t\t\t❮",name, "❯\tHP [", HP, "]  ", lifeArr, "\n");
 }
 
@@ -92,6 +91,9 @@ splashPrompt();
 
 while (alive) {
     readLine.prompt();
-    HP = adjustHP(false, Math.random());
+    let rndNum = Math.floor(Math.random() * 100);
+    console.log(rndNum);
+
+    HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());
     splashPrompt();
 }
