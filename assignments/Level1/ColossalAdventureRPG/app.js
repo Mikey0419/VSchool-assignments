@@ -83,6 +83,7 @@ const adjustHP = (addYesNo, adjNum) => {
 }
 
 const splashPrompt = () => {
+    console.clear();
     console.log("\t\t\t\t❮",name, "❯\tHP [", HP, "]  ", lifeArr, "\n");
 }
 
