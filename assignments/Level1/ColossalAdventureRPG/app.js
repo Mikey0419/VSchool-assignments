@@ -159,12 +159,14 @@ while (alive && !winner) {
                         let randItemNum = getRndInteger(0, items.length);
                         let theItem = items.splice(randItemNum, 1);
                         itemsArray.push(theItem);
-                        HP = adjustHP(true, 50);
+                        HP = adjustHP(true, 25);
 
                         console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 25 HP and have been awarded: ${theItem}!`);
                         enemies.splice(whichEnemy, 1);
                     }
                     break;
+                } else if (stayRun === 1) {
+                    // do something for running away
                 }
             } else {
                 console.clear();
@@ -178,6 +180,8 @@ while (alive && !winner) {
             console.log(itemsArray);
             break;
         case -1:
+            console.clear();
+            splashPrompt();
             break;
     }
     /*HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());*/
