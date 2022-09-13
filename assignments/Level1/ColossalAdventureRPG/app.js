@@ -33,12 +33,25 @@ const msg = "\
 let name = "";
 let HP = 100;
 
+let winner = false;
 const itemsArray = [];
+const items = ['🍌', '💣', '🗡', '🔫'];
 let alive = true;
 let lifeArr = "❤️ ❤️ ❤️ ❤️ ❤️";
-const enemies = ["Thanos", "Gorr the God Slayer", "Mysterio"];
+const enemies = [];
 const fightOrRun = ["Fight", "Run!"];
 const walkOrPrint = ["Walk", "Print inventory"];
+
+function Enemies(strName, intHP, boolAlive) {
+    this.name = strName;
+    this.HP = intHP;
+    this.isAlive = boolAlive;
+}
+
+enemies[0] = new Enemies("Thanos", 100, true);
+enemies[1] = new Enemies("Mysterio", 100, true);
+enemies[2] = new Enemies("Gorr", 100, true);
+
 
 const introMessage = () => {
     console.clear();
@@ -52,14 +65,15 @@ const getRndInteger = (min, max) => {
 
 const adjustHP = (addYesNo, adjNum) => {
     let newHP = 0;
-    newHP = (addYesNo === false) ? HP - (HP * adjNum): HP + (HP * adjNum);
+    newHP = (addYesNo === false) ? (HP - adjNum) : (HP + adjNum);
 
     if(Math.floor(newHP) === 0) {
         console.clear();
         console.log("You died!");
         alive = false;
         lifeArr = "" + `${red}You died!!${resetC}` + "\t💀💀💀💀💀";
-        return 0; }
+        return 0;
+    }
 
     switch (Math.floor(newHP) > 0) {
         case (newHP >= 100):
@@ -87,15 +101,21 @@ const adjustHP = (addYesNo, adjNum) => {
 }
 
 const splashPrompt = () => {
-    console.clear();
     console.log("\t\t\t\t❮",name, "❯\tHP [", HP, "]  ", lifeArr, "\n");
 }
 
 introMessage();
 splashPrompt();
 
-while (alive) {
-    let rndNum = Math.floor(Math.random() * 100);
+while (alive && !winner) {
+
+    /* check and see if all enemies have been defeated */
+    if (enemies.length <= 0) {
+        console.clear();
+        winner = true;
+        alive = false;
+        break;
+    }
 
     let choice = readLine.keyInSelect(walkOrPrint, "Please select an option:");
 
@@ -105,23 +125,64 @@ while (alive) {
             //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
             let randEnemy = Math.floor(Math.random() * 100);
             if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
+                console.clear();
                 splashPrompt();
                 //choose an enemy
-                let whichEnemy = getRndInteger(0, 3);
-                console.log(`${enemies[whichEnemy]} is here!  What would you like to do?`);
+                let whichEnemy = getRndInteger(0, enemies.length);
+                console.log(enemies[whichEnemy].name, " is here!  What would you like to do?");
                 let stayRun = readLine.keyInSelect(fightOrRun);
+
+                /*if they choose to fight*/
+                if (stayRun === 0) {
+                    do {
+                        let enemyAttack = Math.floor(Math.random() * 100);
+                        let myAttack = Math.floor(Math.random() * 100);
+
+                        console.log(enemies[whichEnemy].name, `attacked with ${red}${enemyAttack}${resetC}!  You fought back with ${red}${myAttack}${resetC}!`);
+                        if (enemyAttack > myAttack) {
+                            let rndNum = Math.floor(Math.random() * 10);
+                            HP = adjustHP(false, rndNum);
+                        } else {
+                            let rndNum = Math.floor(Math.random() * 10);
+                            enemies[whichEnemy].HP -= rndNum;
+                        }
+                    } while ((HP > 0) && (enemies[whichEnemy].HP > 0));
+
+                    if (HP <= 0) {
+                        HP = 0;
+                        lifeArr = "💀💀💀💀💀";
+                        console.clear();
+                        console.log(`You were killed by ${red}`, enemies[whichEnemy].name, `${resetC}!!!`);
+                        alive = false;
+                    }
+                    if (enemies[whichEnemy].HP <= 0) {
+                        let randItemNum = getRndInteger(0, items.length);
+                        let theItem = items.splice(randItemNum, 1);
+                        itemsArray.push(theItem);
+                        HP = adjustHP(true, 50);
+
+                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 25 HP and have been awarded: ${theItem}!`);
+                        enemies.splice(whichEnemy, 1);
+                    }
+                    break;
+                }
             } else {
+                console.clear();
                 splashPrompt();
                 console.log("Nothing crazy going on right now\n");
             }
             break;
         case 1:
+            console.clear();
             splashPrompt();
             console.log(itemsArray);
             break;
         case -1:
             break;
     }
-
     /*HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());*/
+}
+
+if (winner === true) {
+    console.log("Congrats!  You defeated the enemies!");
 }
