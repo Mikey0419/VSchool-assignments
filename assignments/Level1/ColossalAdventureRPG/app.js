@@ -122,6 +122,7 @@ while (alive && !winner) {
     switch (choice) {
         //0 = walk, 1 = print inventory
         case 0:
+            console.log("\t\t\t\t\tNumber of enemies remaining:", enemies.length, "\n\n");
             //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
             let randEnemy = Math.floor(Math.random() * 100);
             if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
@@ -161,12 +162,26 @@ while (alive && !winner) {
                         itemsArray.push(theItem);
                         HP = adjustHP(true, 25);
 
-                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 25 HP and have been awarded: ${theItem}!`);
+                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 25 HP and have been given: ${theItem}!`);
                         enemies.splice(whichEnemy, 1);
                     }
                     break;
                 } else if (stayRun === 1) {
-                    // do something for running away
+                    //50% chance of escape: if random number >= 50 then escape
+                    let randomEscape = Math.floor(Math.random() * 100);
+                    if (randomEscape >= 50) {
+                        console.clear();
+                        splashPrompt();
+                        console.log("Whew!  That was close!  You narrowly escaped the wrath of", enemies[whichEnemy].name, "\n");
+                        break;
+                    } else {
+                        let enemyAttack = Math.floor(Math.random() * 10);
+                        HP = adjustHP(false, enemyAttack);
+                        console.clear();
+                        splashPrompt();
+                        console.log(enemies[whichEnemy].name, `attacked with ${red}${enemyAttack}${resetC}!  You sustained ${red}${enemyAttack}${resetC} damage`);
+                        break;
+                    }
                 }
             } else {
                 console.clear();
