@@ -18,7 +18,7 @@
     - When the player kills enemies, they are awarded with items
     - If the user enters 'Print' or 'p' in the console, the console will print the players name, HP, and each item in their inventory */
 
-const readLine = require("readline-sync")
+const readLine = require("readline-sync");
 
 const red = '\x1b[31m';
 const yellow = '\x1b[33m';
@@ -121,7 +121,7 @@ const adjustHP = (addYesNo, adjNum) => {
 
 const splashPrompt = () => {
     if (HP >= 100) { HP = 100; }
-    console.log("\t\t\t\t🦸🏼‍♂️", `${green}${name}${resetC}`, " | HP ⟨", HP, "⟩ | ", lifeArr, "\n");
+    console.log("\t\t\t\t\t🦸🏼‍♂️", `${green}${name}${resetC}`, " | HP ⟨", HP, "⟩ | ", lifeArr, "\n");
 }
 
 introMessage();
@@ -142,7 +142,6 @@ while (alive && !winner) {
     switch (choice) {
         //0 = walk, 1 = print inventory
         case 0:
-            console.log("\t\t\t\t\tNumber of enemies remaining:", enemies.length, "\n\n");
             //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
             let randEnemy = Math.floor(Math.random() * 100);
             if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
@@ -183,11 +182,12 @@ while (alive && !winner) {
                         let randItemNum = getRndInteger(0, items.length);
                         let theItem = items.splice(randItemNum, 1);
                         itemsArray.push(theItem);
-                        HP = adjustHP(true, 30);
+                        HP = adjustHP(true, 20);
 
-                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}30${resetC} HP and have been given: ${theItem}!`);
+                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}20${resetC} HP and have been given: ${theItem}!`);
                         defeatedEnemies.push(enemies[whichEnemy].name);
                         enemies.splice(whichEnemy, 1);
+                        /*console.log("\t\t\t\t\tNumber of enemies remaining:", enemies.length, "\n\n");*/
                     }
                     break;
                 } else if (stayRun === 1) {
