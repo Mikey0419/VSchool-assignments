@@ -21,7 +21,10 @@
 const readLine = require("readline-sync")
 
 const red = '\x1b[31m';
+const yellow = '\x1b[33m';
+const green = '\x1b[32m';
 const resetC = '\x1b[0m';
+const magenta = '\x1b[35m';
 
 const msg = "\
   ██████  ██████  ██       ██████  ███████ ███████  █████  ██          ██████  ██████   ██████ \n \
@@ -30,32 +33,48 @@ const msg = "\
 ██      ██    ██ ██      ██    ██      ██      ██ ██   ██ ██          ██   ██ ██      ██    ██\n \
  ██████  ██████  ███████  ██████  ███████ ███████ ██   ██ ███████     ██   ██ ██       ██████  \n";
 
+const msgWinner = "\
+ ██    ██  ██████  ██    ██     ██     ██  ██████  ███    ██ ██ ██ \n \
+ ██  ██  ██    ██ ██    ██     ██     ██ ██    ██ ████   ██ ██ ██ \n \
+  ████   ██    ██ ██    ██     ██  █  ██ ██    ██ ██ ██  ██ ██ ██ \n \
+   ██    ██    ██ ██    ██     ██ ███ ██ ██    ██ ██  ██ ██        \n \
+   ██     ██████   ██████       ███ ███   ██████  ██   ████ ██ ██ \n";
+
+const msgGameOver = "\
+  ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████ \n \
+██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██ \n \
+██   ███ ███████ ██ ████ ██ █████       ██    ██ ██    ██ █████   ██████   \n \
+██    ██ ██   ██ ██  ██  ██ ██          ██    ██  ██  ██  ██      ██   ██ \n \
+ ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██ \n";
+
 let name = "";
 let HP = 100;
 
 let winner = false;
 const itemsArray = [];
-const items = ['🍌', '💣', '🗡', '🔫'];
+const items = ["🍌", "💣", "🗡", "🔫"];
 let alive = true;
 let lifeArr = "❤️ ❤️ ❤️ ❤️ ❤️";
 const enemies = [];
 const fightOrRun = ["Fight", "Run!"];
 const walkOrPrint = ["Walk", "Print inventory"];
 
-function Enemies(strName, intHP, boolAlive) {
+function Enemies(strName, intHP, intAttackPower) {
     this.name = strName;
     this.HP = intHP;
-    this.isAlive = boolAlive;
+    this.attackPower = (intAttackPower === undefined) ? 10 : intAttackPower;
 }
 
-enemies[0] = new Enemies("Thanos", 100, true);
-enemies[1] = new Enemies("Mysterio", 100, true);
-enemies[2] = new Enemies("Gorr", 100, true);
+enemies[0] = new Enemies("Thanos", 100, 25);
+enemies[1] = new Enemies("Mysterio", 100, 30);
+enemies[2] = new Enemies("Gorr", 100);
+enemies[3] = new Enemies("Green Goblin", 100, 20);
 
+let defeatedEnemies = [];
 
 const introMessage = () => {
     console.clear();
-    console.log(`${red}${msg}${resetC}`, "\n\nPlease enter your name: ");
+    console.log(`${green}${msg}${resetC}`, "\n\nPlease enter your name: ");
     name = readLine.prompt();
 }
 
@@ -75,7 +94,7 @@ const adjustHP = (addYesNo, adjNum) => {
         return 0;
     }
 
-    switch (Math.floor(newHP) > 0) {
+    switch (newHP) {
         case (newHP >= 100):
             newHP = 100;
             lifeArr = "❤️ ❤️ ❤️ ❤️ ❤️";
@@ -97,11 +116,12 @@ const adjustHP = (addYesNo, adjNum) => {
             break;
     }
 
-    return Math.floor(newHP);
+    return newHP;
 }
 
 const splashPrompt = () => {
-    console.log("\t\t\t\t❮",name, "❯\tHP [", HP, "]  ", lifeArr, "\n");
+    if (HP >= 100) { HP = 100; }
+    console.log("\t\t\t\t🦸🏼‍♂️", `${green}${name}${resetC}`, " | HP ⟨", HP, "⟩ | ", lifeArr, "\n");
 }
 
 introMessage();
@@ -130,7 +150,7 @@ while (alive && !winner) {
                 splashPrompt();
                 //choose an enemy
                 let whichEnemy = getRndInteger(0, enemies.length);
-                console.log(enemies[whichEnemy].name, " is here!  What would you like to do?");
+                console.log(`${yellow}`, enemies[whichEnemy].name, `${resetC}`, "is here!  What would you like to do?");
                 let stayRun = readLine.keyInSelect(fightOrRun);
 
                 /*if they choose to fight*/
@@ -140,11 +160,12 @@ while (alive && !winner) {
                         let myAttack = Math.floor(Math.random() * 100);
 
                         console.log(enemies[whichEnemy].name, `attacked with ${red}${enemyAttack}${resetC}!  You fought back with ${red}${myAttack}${resetC}!`);
+                        console.log(" →", `Your ${magenta}HP: ${resetC}${HP}`, "\n");
                         if (enemyAttack > myAttack) {
-                            let rndNum = Math.floor(Math.random() * 10);
+                            let rndNum = Math.floor(Math.random() * enemies[whichEnemy].attackPower);
                             HP = adjustHP(false, rndNum);
                         } else {
-                            let rndNum = Math.floor(Math.random() * 10);
+                            let rndNum = Math.floor(Math.random() * 25);
                             enemies[whichEnemy].HP -= rndNum;
                         }
                     } while ((HP > 0) && (enemies[whichEnemy].HP > 0));
@@ -153,6 +174,7 @@ while (alive && !winner) {
                         HP = 0;
                         lifeArr = "💀💀💀💀💀";
                         console.clear();
+                        console.log(`${red}${msgGameOver}${resetC}`, "\n\n");
                         console.log(`You were killed by ${red}`, enemies[whichEnemy].name, `${resetC}!!!`);
                         alive = false;
                     }
@@ -160,9 +182,10 @@ while (alive && !winner) {
                         let randItemNum = getRndInteger(0, items.length);
                         let theItem = items.splice(randItemNum, 1);
                         itemsArray.push(theItem);
-                        HP = adjustHP(true, 25);
+                        HP = adjustHP(true, 20);
 
-                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 25 HP and have been given: ${theItem}!`);
+                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded 20 HP and have been given: ${theItem}!`);
+                        defeatedEnemies.push(enemies[whichEnemy].name);
                         enemies.splice(whichEnemy, 1);
                     }
                     break;
@@ -175,8 +198,16 @@ while (alive && !winner) {
                         console.log("Whew!  That was close!  You narrowly escaped the wrath of", enemies[whichEnemy].name, "\n");
                         break;
                     } else {
-                        let enemyAttack = Math.floor(Math.random() * 10);
+                        let enemyAttack = Math.floor(Math.random() * enemies[whichEnemy].attackPower);
                         HP = adjustHP(false, enemyAttack);
+                        if (HP <= 0) {
+                            HP = 0;
+                            lifeArr = "💀💀💀💀💀";
+                            console.clear();
+                            console.log(`${red}${msgGameOver}${resetC}`, "\n\n");
+                            console.log(`You were killed by ${red}`, enemies[whichEnemy].name, `${resetC}!!!`);
+                            alive = false;
+                        }
                         console.clear();
                         splashPrompt();
                         console.log(enemies[whichEnemy].name, `attacked with ${red}${enemyAttack}${resetC}!  You sustained ${red}${enemyAttack}${resetC} damage`);
@@ -192,16 +223,20 @@ while (alive && !winner) {
         case 1:
             console.clear();
             splashPrompt();
-            console.log(itemsArray);
+            console.log(`${yellow}Items in your inventory:${resetC}`, itemsArray.join(", "));
             break;
         case -1:
             console.clear();
             splashPrompt();
             break;
     }
-    /*HP = (rndNum >= 50) ? adjustHP(false, Math.random()) : adjustHP(true, Math.random());*/
 }
 
 if (winner === true) {
-    console.log("Congrats!  You defeated the enemies!");
+    console.clear();
+    console.log(msgWinner);
+    console.log("Congrats!  You defeated:\n");
+    for (let i = 0; i < defeatedEnemies.length; i++) {
+        console.log(`${magenta}${defeatedEnemies[i]}${resetC},`);
+    }
 }
