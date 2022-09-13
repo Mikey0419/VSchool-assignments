@@ -50,6 +50,8 @@ const msgGameOver = "\
 let name = "";
 let HP = 100;
 
+let choice;
+let chosen = false;
 let winner = false;
 const itemsArray = [];
 const items = ["🍌", "💣", "🗡", "🔫"];
@@ -128,7 +130,6 @@ introMessage();
 splashPrompt();
 
 while (alive && !winner) {
-
     /* check and see if all enemies have been defeated */
     if (enemies.length <= 0) {
         console.clear();
@@ -137,11 +138,21 @@ while (alive && !winner) {
         break;
     }
 
-    let choice = readLine.keyInSelect(walkOrPrint, "Please select an option:");
+    while (chosen != true) {
+        choice = readLine.question("\n[W]alk or [P]rint inventory? > ");
+        let regexp = /(p|P)|(w|W)/;
+        let a = regexp.test(choice);
+        if (a === true) { chosen = true; } else {
+            console.clear();
+            splashPrompt();
+        }
+    }
 
-    switch (choice) {
+    chosen = false;
+
+    switch (choice !== undefined) {
         //0 = walk, 1 = print inventory
-        case 0:
+        case ((choice == 'w') || (choice == 'W')):
             //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
             let randEnemy = Math.floor(Math.random() * 100);
             if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
@@ -222,7 +233,7 @@ while (alive && !winner) {
                 console.log("Nothing crazy going on right now.  Better keep walking ...\n");
             }
             break;
-        case 1:
+        case ((choice == 'p') || (choice == 'P') || (choice == 'print')):
             console.clear();
             splashPrompt();
             if (itemsArray.length === 0) { console.log(`${magenta}There are no items in your inventory${resetC}`); }
