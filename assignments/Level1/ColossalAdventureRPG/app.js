@@ -152,7 +152,7 @@ while (alive && !winner) {
 
     switch (choice !== undefined) {
         //0 = walk, 1 = print inventory
-        case ((choice == 'w') || (choice == 'W') || (choice === 'walk')):
+        case ((choice == 'w') || (choice == 'W') || (choice == 'walk')):
             //generate a random number whereby 1/3 and 1/4 cause an enemy to appear
             let randEnemy = Math.floor(Math.random() * 100);
             if ((randEnemy % 3 === 0) || (randEnemy % 4 === 0)) {
