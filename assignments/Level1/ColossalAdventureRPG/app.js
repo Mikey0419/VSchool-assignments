@@ -165,7 +165,8 @@ while (alive && !winner) {
 
                 /*if they choose to fight*/
                 if (stayRun === 0) {
-                    do {
+                    /*do*/
+                    while ((HP > 0) && (enemies[whichEnemy].HP > 0)) {
                         let enemyAttack = Math.floor(Math.random() * 100);
                         let myAttack = Math.floor(Math.random() * 100);
 
@@ -179,7 +180,7 @@ while (alive && !winner) {
                             let rndNum = Math.floor(Math.random() * 25);
                             enemies[whichEnemy].HP -= rndNum;
                         }
-                    } while ((HP > 0) && (enemies[whichEnemy].HP > 0));
+                    } /* while ((HP > 0) && (enemies[whichEnemy].HP > 0)); */
 
                     if (HP <= 0) {
                         HP = 0;
@@ -195,7 +196,7 @@ while (alive && !winner) {
                         itemsArray.push(theItem);
                         HP = adjustHP(true, 20);
 
-                        console.log(`You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}20${resetC} HP and have been given: ${theItem}!`);
+                        console.log("\n\n\t\t\t\t\t\t", `You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}20${resetC} HP and have been given: ${theItem}!`);
                         defeatedEnemies.push(enemies[whichEnemy].name);
                         enemies.splice(whichEnemy, 1);
                         /*console.log("\t\t\t\t\tNumber of enemies remaining:", enemies.length, "\n\n");*/
@@ -217,7 +218,7 @@ while (alive && !winner) {
                             lifeArr = "💀💀💀💀💀";
                             console.clear();
                             console.log(`${red}${msgGameOver}${resetC}`, "\n\n");
-                            console.log(`You were killed by ${red}`, enemies[whichEnemy].name, `${resetC}!!!`);
+                            console.log("\t\t\t\t\t\t", `You were killed by ${red}`, enemies[whichEnemy].name, `${resetC}!!!`);
                             alive = false;
                         }
                         console.clear();
