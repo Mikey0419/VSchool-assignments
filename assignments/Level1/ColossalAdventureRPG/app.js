@@ -194,9 +194,9 @@ while (alive && !winner) {
                         let randItemNum = getRndInteger(0, items.length);
                         let theItem = items.splice(randItemNum, 1);
                         itemsArray.push(theItem);
-                        HP = adjustHP(true, 20);
+                        HP = adjustHP(true, 35);
 
-                        console.log("\n\n\t\t\t\t\t\t", `You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}20${resetC} HP and have been given: ${theItem}!`);
+                        console.log("\n\n\t\t\t\t\t\t", `You defeated ${red}`, enemies[whichEnemy].name, `${resetC}!  You have been awarded ${green}35${resetC} HP and have been given: ${theItem}!`);
                         defeatedEnemies.push(enemies[whichEnemy].name);
                         enemies.splice(whichEnemy, 1);
                         /*console.log("\t\t\t\t\tNumber of enemies remaining:", enemies.length, "\n\n");*/
