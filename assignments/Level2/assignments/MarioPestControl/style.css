@@ -4,6 +4,11 @@
     font-family: 'New Super Mario Font U', sans-serif;
 }
 
+.addText {
+    font-family: "Fira Code", monospace;
+    font-size: 30px;
+}
+
 a {
     text-decoration: none;
     color: red;
@@ -15,7 +20,7 @@ a {
 }
 
 li {
-    font-size: 30px;
+    font-size: 40px;
     padding: 15px;
 }
 
@@ -68,13 +73,15 @@ p {
 
 .input {
     height: 30px;
-    width: 30px;
+    width: 50px;
     border: none;
     border-bottom: 1px solid black;
     font-size: 35px;
     color: rgb(238, 255, 0);
     text-align: center;
     background-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .footer {
