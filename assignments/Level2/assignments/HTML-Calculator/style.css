@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #828188;
+    font-family: "Fira Code", monospace;
+    font-size: 1rem;
+}
+
+form {
+    background-color: #8D7D75;
+}
+
+.container {
+    position: absolute;
+    display: grid;
+    grid-row-gap: 15px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    padding: 10px;
+    background-color: #8D7D75;
+    width: 15vw;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 20%;
+}
+
+.result {
+    background-color: #8D7D75;
+    border: none;
+    width: 60px;
+    text-align: center;
+}
+
+.inputText {
+    border-radius: 5px;
+    border: 1px solid #463D40;
+    background-color: #FFFDDF;
+    width: 60px;
+    height: auto;
+}
+
+button {
+    width: 15px;
+    background-color: rgb(110, 124, 124);
+    border-radius: 2px;
+    border: 1px solid black;
+}
