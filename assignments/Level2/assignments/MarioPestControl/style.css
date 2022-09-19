@@ -71,9 +71,10 @@ p {
     width: 30px;
     border: none;
     border-bottom: 1px solid black;
-    font-size: 25px;
-    color: red;
+    font-size: 35px;
+    color: rgb(238, 255, 0);
     text-align: center;
+    background-color: transparent;
 }
 
 .footer {
