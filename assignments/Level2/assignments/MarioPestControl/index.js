@@ -20,10 +20,13 @@ function sound(src) {
     }
 }
 
+total.textContent = 0;
+
 const coinSound = new sound("./coin.mp3");
 
 const updateTotal = () => {
     let subTotal = 0;
+
     let bobOmbTotal = (isNaN(bobElement.value)) ? 0 : bobElement.value;
     let goombaTotal = (isNaN(goombaElement.value)) ? 0 : goombaElement.value;
     let cheepTotal = (isNaN(cheepElement.value)) ? 0 : cheepElement.value;

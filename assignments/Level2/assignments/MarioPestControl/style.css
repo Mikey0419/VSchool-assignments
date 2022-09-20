@@ -65,13 +65,13 @@ p {
 }
 
 .bg {
-    background-image: url("./cleanbg.jpg");
+    background: url("./cleanbg.jpg") no-repeat center bottom fixed;
     background-size: cover;
+    /* background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
-    width: 100%;
+    background-position: top; */
+    width: 100vw;
     height: 100vh;
-    z-index: -9999;
 }
 
 .input {
