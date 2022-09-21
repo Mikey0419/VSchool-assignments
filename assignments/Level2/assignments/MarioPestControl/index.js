@@ -33,27 +33,27 @@ const updateTotal = () => {
 
     subTotal = new Number(bobOmbTotal * 7 + goombaTotal * 5 + cheepTotal * 11);
 
-    coinSound.play();
     return subTotal;
 }
 
+
 bobElement.addEventListener("change", function() {
     total.textContent = "";
-    let subTotal = updateTotal();
+    subTotal = parseInt(updateTotal());
 
     total.textContent = subTotal;
 })
 
 goombaElement.addEventListener("change", function() {
     total.textContent = "";
-    let subTotal = updateTotal();
+    subTotal = updateTotal();
 
     total.textContent = subTotal;
 })
 
 cheepElement.addEventListener("change", function() {
     total.textContent = "";
-    let subTotal = updateTotal();
+    subTotal = updateTotal();
 
     total.textContent = subTotal;
 })
