@@ -20,40 +20,72 @@ function sound(src) {
     }
 }
 
+let subTotal = 0;
+let prevTotal = 0;
 total.textContent = 0;
+let intervalID;
 
 const coinSound = new sound("./coin.mp3");
 
 const updateTotal = () => {
-    let subTotal = 0;
+    let newTotal = 0;
 
     let bobOmbTotal = (isNaN(bobElement.value)) ? 0 : bobElement.value;
     let goombaTotal = (isNaN(goombaElement.value)) ? 0 : goombaElement.value;
     let cheepTotal = (isNaN(cheepElement.value)) ? 0 : cheepElement.value;
 
-    subTotal = new Number(bobOmbTotal * 7 + goombaTotal * 5 + cheepTotal * 11);
+    newTotal = new Number(bobOmbTotal * 7 + goombaTotal * 5 + cheepTotal * 11);
 
-    return subTotal;
+    return newTotal;
 }
 
+function countUp () {
+    if (prevTotal === subTotal) {
+        clearInterval(intervalID);
+        prevTotal = subTotal;
+        return;
+    } else {
+        prevTotal++;
+        total.textContent = prevTotal;
+        coinSound.play();
+    }
+}
+
+function countDown () {
+    if (prevTotal === subTotal) {
+        clearInterval(intervalID);
+        prevTotal = subTotal;
+        return;
+    } else {
+        prevTotal--;
+        total.textContent = prevTotal;
+        coinSound.play();
+    }
+}
 
 bobElement.addEventListener("change", function() {
     total.textContent = "";
     subTotal = parseInt(updateTotal());
-
-    total.textContent = subTotal;
+    console.log('Previous Total = ', prevTotal, 'Subtotal = ', subTotal);
+    if (prevTotal < subTotal) { total.textContent = prevTotal; intervalID = setInterval(countUp, 1); }
+    if (prevTotal > subTotal) { total.textContent = prevTotal; intervalID = setInterval(countDown, 1); }
+    //total.textContent = subTotal;
 })
 
 goombaElement.addEventListener("change", function() {
     total.textContent = "";
-    subTotal = updateTotal();
-
-    total.textContent = subTotal;
+    subTotal = parseInt(updateTotal());
+    console.log('Previous Total = ', prevTotal, 'Subtotal = ', subTotal);
+    if (prevTotal < subTotal) { total.textContent = prevTotal; intervalID = setInterval(countUp, 1); }
+    if (prevTotal > subTotal) { total.textContent = prevTotal; intervalID = setInterval(countDown, 1); }
+    //total.textContent = subTotal;
 })
 
 cheepElement.addEventListener("change", function() {
     total.textContent = "";
-    subTotal = updateTotal();
-
-    total.textContent = subTotal;
+    subTotal = parseInt(updateTotal());
+    console.log('Previous Total = ', prevTotal, 'Subtotal = ', subTotal);
+    if (prevTotal < subTotal) { total.textContent = prevTotal; intervalID = setInterval(countUp, 1); }
+    if (prevTotal > subTotal) { total.textContent = prevTotal; intervalID = setInterval(countDown, 1); }
+    //total.textContent = subTotal;
 })
