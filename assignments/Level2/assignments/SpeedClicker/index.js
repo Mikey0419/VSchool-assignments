@@ -6,7 +6,10 @@ let numExists = localStorage.getItem("clicks");
 
 console.log(numExists);
 
-let num = ((!isNaN(numExists)) && (numExists !== null)) ? numExists : (0, localStorage.setItem("clicks", 0));
+let num;
+
+((!isNaN(numExists)) && (numExists !== null)) ? (num = numExists) : (num = 0, localStorage.setItem("clicks", 0));
+
 let clickable = true;
 let timelimit = 30;
 

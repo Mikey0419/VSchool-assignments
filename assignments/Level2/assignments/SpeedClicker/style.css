@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Fira Code", monospace;
+}
+
+.container {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
