@@ -13,8 +13,6 @@ function sum(num1, num2) {
     return num1 + num2;
 }
 
-function thing() { }
-
 function subtract(num1, num2) {
     return num1 - num2;
 }
@@ -91,4 +89,54 @@ const movies = [
 
 const action = movies.filter(actionMovie => actionMovie.genre === "action");
 
-console.log(action);
+console.log(action, '\n');
+
+/* # .forEach
+    Returns: Undefined 
+    Purpose: Used in place of a for-loop
+        Caveat: For-loops allow you to customize where the loop starts, stops, and increments by.
+                forEach will always loop the entire length of the array.*/
+
+const numArr = [1, 2, 3, 4, 5, 6, 7, 8]
+const newNumArr = [];
+
+numArr.forEach(x => newNumArr.push(x + 1));
+
+console.log(newNumArr, '\n');
+
+const userArr = [
+    { name: "joe" },
+    { name: "julie" },
+    { name: "rick" }
+]
+
+userArr.forEach(x => console.log(x.name, "says hi!"), '\n');
+
+                
+/*# .find()
+    Returns: The first item it finds in the array that matches your criteria
+    Purpose: Finding an item in an array*/
+
+const findRick = userArr.find(user => user.name === "rick");
+console.log(findRick,'\n');
+    
+/* # .findIndex()
+    Returns: The index number of the first item it finds in the array that matches your criteria
+    Purpose: Finding the index number of an item in an array */
+
+const indexJoe = userArr.findIndex(user => user.name === "joe");
+console.log(indexJoe, '\n');
+
+/* # .some()
+    Returns: Returns true if at least one item in the array matches your criteria, false otherwise
+    Purpose: To see if something exists in an array */
+
+const someResult = userArr.some(user => user.name[0] === 'j');
+console.log('Does at least one item in userArr contain a j? ->', someResult, '\n');
+
+/* # .every()
+    Returns: Returns true if EVERY item in the array matches your criteria, false otherwise.
+    Purpose: TO see if Everything in an array matches your criteria */
+
+const everyResult = numArr.every(x => x > 0);
+console.log("Does every number in numArr > 0? ->", everyResult);
