@@ -107,6 +107,21 @@ p {
     font-family: "Fira Code", monospace;
   }
 
+  @media only screen and (max-width: 1168px) {
+    .splash {
+        position: relative;
+        background-image: url("./title_large.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top;
+        height: 10vh;
+        margin-bottom: 140px;
+        top: 75px;
+        text-align: center;
+        font-size: 10rem;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     li {
         font-size: 30px;
