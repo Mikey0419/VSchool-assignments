@@ -36,8 +36,6 @@ let peopleArray = [
     }
 ]
 
-let finalArr = [];
-
 /*
 
 
@@ -49,15 +47,11 @@ let finalArr = [];
 
 function sortedOfAge(arr){
     //must be over 18
-    //arr.filter grabs all over 18
-    const resultOfAge = arr.filter(item => item.age >= 18);
-
-    const alphaByLastName = resultOfAge.sort((a, b) => (a.lastName > b.lastName) ? 1 : -1);
-
-    const finalList = alphaByLastName.map(item => `<li>${item.firstName} ${item.lastName} is ${item.age}</li>`);
-
-    return finalList;
-    
+    //arr.filter grabs all over 18 | .sort sorts by last name | .map adds <li></li> to each item -> arr.filter().sort().map()
+    const resultOfAge = arr.filter(item => item.age >= 18).sort((a, b) => (a.lastName > b.lastName) ? 1 : -1).map(item => `<li>${item.firstName} ${item.lastName} is ${item.age}</li>`);
+    //resultOfAge.sort((a, b) => (a.lastName > b.lastName) ? 1 : -1);
+    //const finalList = resultOfAge.map(item => `<li>${item.firstName} ${item.lastName} is ${item.age}</li>`);
+    return resultOfAge;
 }
 
 console.log(sortedOfAge(peopleArray));
