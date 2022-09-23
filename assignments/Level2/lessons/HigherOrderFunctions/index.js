@@ -140,3 +140,15 @@ console.log('Does at least one item in userArr contain a j? ->', someResult, '\n
 
 const everyResult = numArr.every(x => x > 0);
 console.log("Does every number in numArr > 0? ->", everyResult);
+
+/* # .sort()
+    Returns: The array sorted but sort also mutates the original array, so capturing the returned value is not necessary.
+    Purpose: To sort an unsorted array of items. */
+
+const sortNumArr = [34, 6, 22, 1, 6, 44, 3, 64, 234, 5];
+
+console.log(sortNumArr, "\nbecomes:");
+
+sortNumArr.sort((a, b) => a - b);
+
+console.log(sortNumArr);
