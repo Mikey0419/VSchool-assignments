@@ -1,5 +1,7 @@
 console.clear();
 
+const axios = require('axios').default;
+
 /* ### **1) Turn an array of numbers into a total of all the numbers**
 
 
@@ -173,7 +175,7 @@ function voterResults(arr) {
    return returnResult;
 }
 
-console.log(voterResults(voters)); // Returned value shown below:
+console.log(voterResults(voters), '\n'); // Returned value shown below:
 /*
 { numYoungVotes: 1,
   numYoungPeople: 4,
@@ -194,3 +196,20 @@ Once you get the data, use `.reduce()` to figure out how many `watchers` you
 
 > Note: If you've learned how to use the axios library, you can do this in node. Otherwise, you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
 > */
+
+let resultsArr = {};
+
+axios.get("https://api.github.com/users/mikey0419/repos")
+    .then(function (result) {
+        resultsArr = result.data;
+
+        const numberOfWatchers = resultsArr.reduce(function(final, current) {
+            console.log(`Name: ${current.name} | Watchers: ${current.watchers}`);
+
+            final += current.watchers;
+
+            return final;
+        }, 0)
+
+        console.log('\n', "Total number of watchers: ", numberOfWatchers);
+    })
