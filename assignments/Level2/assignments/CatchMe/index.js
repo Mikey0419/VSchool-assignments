@@ -1,3 +1,5 @@
+console.clear();
+
 function sum(x, y) {
     try {
         if ((isNaN(x)) || (isNaN(y))) {
@@ -24,3 +26,4 @@ function login(username, password){
 }
 
 login('sam', '123abc');
+login('mike', 'abc123');
