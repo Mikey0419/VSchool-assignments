@@ -22,6 +22,18 @@ ZEN GARDEN CSS
     padding: 0;
 }
 
+.bamboo-bg {
+    background-image: url("./bamboo.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.contour-bg {
+    background-image: url("./contours-opaque.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
 .top-portion {
     background-color: #1d3f3f;
     position: absolute;
@@ -47,23 +59,23 @@ img {
 
 h1 {
     font-family: 'Julius Sans One', sans-serif;
-    font-weight: 200;
+    font-weight: 100;
     padding: 10px 0 10px 10px;
     position: relative;
-    left: -15px;
-    font-size: 3.1em;
-    color: white;
+    left: -20px;
+    font-size: 2.5em;
+    color: rgba(255, 255, 255, 0.876);
 }
 
 h2 {
     font-family: 'Julius Sans One', sans-serif;
     text-align: left;
-    font-size: 2em;
+    font-size: 1.35em;
     font-weight: lighter;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-style: italic;
     font-weight: lighter;
     position: relative;
@@ -72,9 +84,25 @@ h3 {
 }
 
 p {
-    padding: 0px 0 0 50px;
-    font-style: italic;
-    font-size: 1.25em;
+/*     padding: 0px 0 0 50px; */
+    font-size: 0.8em;
+    text-align: justify;
+    line-height: 2;
+    color: #435B5E;
+}
+
+a.download-link {
+    color: #ABBDA9;
+    text-decoration: none;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 1em;
+    transition: background-color linear 0.5s, color linear 0.5s;
+    padding: 10px 5px 10px 5px;
+}
+
+a.download-link:hover {
+    background-color: #3D8A9F;
+    color: white;
 }
 
 .grid-container {
@@ -86,17 +114,22 @@ p {
 .grid-nav {
     background-color: aquamarine;
     grid-column: 1 / 3;
-    padding: 90px 10px 100px 95px;
-    background-image: url('./huntington.jpeg');
-    background-repeat: no-repeat;
-    background-size: 150%;
-    background-position: center;
+    padding: 70px 10px 70px 95px;
+    background-attachment: scroll, scroll, fixed;
+  background-color: rgba(138,188,159,0.5);
+  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
 }
 
 .grid-nav-links {
-    background-color: rgb(41, 85, 70);
     grid-column: 3 / 4;
     padding: 20px;
+    background-color: rgb(34, 50, 41);
+    background-attachment: scroll, scroll, fixed;
+  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
 }
 
 .grid-about-main {
@@ -104,30 +137,41 @@ p {
     grid-column: 1 / 3;
     padding: 50px;
     text-align: center;
+    padding-left: 150px;
+    padding-right: 140px;
 }
 
 .grid-about-authors {
-    background-color: #C0CAC3;
+    background-color: #C0CAC380;
     grid-column: 3 / 4;
     padding: 50px 70px 70px 50px;
 }
 
 .grid-participation {
-    background-color: aquamarine;
+    background-color: #C2DBC9;
     grid-column: 1 / 3;
     padding: 50px;
+    background-attachment: scroll, scroll, fixed;
+  background-color: rgba(138,188,159,0.5);
+  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(bamboo.png);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: auto, auto, cover;
 }
 
 .grid-participation-links {
-    background-color: rgb(41, 85, 70);
+    background-color: #B0CCBB;
     grid-column: 3 / 4;
     padding: 50px;
 }
 
 .grid-footer {
     grid-column: 1 / 4;
-    background-color: darkcyan;
-    padding: 75px;
+    background-color: #C2DBC975;
+    background-image: url("./koi.jpeg"), url("./contours-opaque.png");
+    background-repeat: no-repeat, repeat;
+    background-size: cover, auto;
+    padding: 100px;
+    text-align: center;
 }
 
 .grid-icons {
@@ -176,3 +220,29 @@ p {
     padding: 20px;
     margin: 25px;
   }
+
+.icon-download:before {
+    content: "\e901";
+    border-radius: 2px;
+    padding: 2px;
+    border: solid #D9E1CD;
+    background-color: #D9E1CD;
+}
+
+.underlined {
+    /*border-bottom: dotted 1px black;*/
+    text-decoration: underline dotted black;
+    position: relative;
+    margin-top: -5px;
+}
+
+.underlined-title {
+    border-bottom: dotted 2px rgba(255, 255, 255, 0.572);
+    position: relative;
+    margin-top: -5px;
+}
+
+.underlined::before {
+    padding: 0;
+    margin: 0;
+}
