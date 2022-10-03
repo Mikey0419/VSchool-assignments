@@ -34,6 +34,12 @@ ZEN GARDEN CSS
     background-attachment: fixed;
 }
 
+.by-text {
+    font-style: italic;
+    font-weight: lighter;
+    color: #C2CCC5;
+}
+
 .top-portion {
     background-color: #1d3f3f;
     position: absolute;
@@ -54,15 +60,18 @@ img {
     float: left;
     margin-left: 20px;
     margin-right: 50px;
+    padding-top: 10px;
     opacity: 0.9;
+    height: 50%;
+    opacity: 0.5;
 }
 
 h1 {
     font-family: 'Julius Sans One', sans-serif;
     font-weight: 100;
-    padding: 10px 0 10px 10px;
+    padding: 85px 0 10px 10px;
     position: relative;
-    left: -20px;
+    left: -75px;
     font-size: 2.5em;
     color: rgba(255, 255, 255, 0.876);
 }
@@ -70,34 +79,68 @@ h1 {
 h2 {
     font-family: 'Julius Sans One', sans-serif;
     text-align: left;
-    font-size: 1.35em;
+    font-size: 1.9em;
     font-weight: lighter;
+}
+
+h2::after {
+    content: '\A';
+}
+
+h5 {
+    font-family: 'Julius Sans One', sans-serif;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #6F8183;
 }
 
 h3 {
     font-size: 1.3em;
     font-style: italic;
     font-weight: lighter;
-    position: relative;
-    left: -15px;
-    color: rgba(255, 255, 255, 0.572);
+    color: #A1B8B8;
 }
 
 p {
 /*     padding: 0px 0 0 50px; */
-    font-size: 0.8em;
-    text-align: justify;
-    line-height: 2;
+    font-size: 1em;
+    text-align: left;
+    line-height: 2.0;
     color: #435B5E;
+    padding-top: 10px;
+}
+
+p::before {
+    content: '\A';
+}
+
+p.authors-p {
+    font-size: 1em;
+    color: black;
+}
+
+p.authors-p::before {
+    content: '\A';
+}
+
+li {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #D9E3DC;
+}
+
+ul {
+    list-style: none;
+    margin-top: 20px;
 }
 
 a.download-link {
     color: #ABBDA9;
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 1em;
-    transition: background-color linear 0.5s, color linear 0.5s;
-    padding: 10px 5px 10px 5px;
+    font-size: 0.9em;
+    transition: background-color linear 0.2s, color linear 0.2s;
+    padding: 10px 7px;
 }
 
 a.download-link:hover {
@@ -105,31 +148,74 @@ a.download-link:hover {
     color: white;
 }
 
+a.download-link:hover .icon-download:before {
+    background-color: #367D93;
+    border: solid #367D93;
+}
+
+a.author {
+    color: #616857;
+    text-decoration: none;
+}
+
+a.author:hover {
+    color: #49968E;
+    text-decoration: none;
+}
+
+a.nav-link {
+    text-decoration: none;
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 0.9em;
+    color:rgba(255, 255, 255, 0.876);
+    padding: 18px 125px;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    top: 45%;
+    left: 15%;
+    text-align: left;
+    display: inline-block;
+    margin-right: 77px;
+}
+
+span.navlink {
+    display: flex;
+    position: relative;
+    top: 40%;
+    width: auto;
+}
+
+.arrow {
+    padding: 18px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    margin-left: 2px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: 250px auto auto auto auto auto;
 }
 
 .grid-nav {
-    background-color: aquamarine;
     grid-column: 1 / 3;
-    padding: 70px 10px 70px 95px;
     background-attachment: scroll, scroll, fixed;
-  background-color: rgba(138,188,159,0.5);
-  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: auto, auto, cover;
+    padding-left: 100px;
+    background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
 }
 
 .grid-nav-links {
     grid-column: 3 / 4;
     padding: 20px;
-    background-color: rgb(34, 50, 41);
     background-attachment: scroll, scroll, fixed;
-  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: auto, auto, cover;
+    background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(huntington.jpeg);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
+    background-color: rgba(18, 38, 39, 0.5);
+    background-blend-mode: color-dodge;
 }
 
 .grid-about-main {
@@ -138,47 +224,56 @@ a.download-link:hover {
     padding: 50px;
     text-align: center;
     padding-left: 150px;
-    padding-right: 140px;
+    padding-right: 100px;
 }
 
 .grid-about-authors {
-    background-color: #C0CAC380;
+    background-color: #E5EDE8;
     grid-column: 3 / 4;
-    padding: 50px 70px 70px 50px;
+    padding: 50px 70px 0px 85px;
 }
 
 .grid-participation {
     background-color: #C2DBC9;
     grid-column: 1 / 3;
-    padding: 50px;
+    padding: 30px;
+    text-align: center;
+    padding-left: 150px;
+    padding-right: 65px;
     background-attachment: scroll, scroll, fixed;
-  background-color: rgba(138,188,159,0.5);
-  background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(bamboo.png);
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: auto, auto, cover;
+    background-color: rgba(138,188,159,0.5);
+    background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(bamboo.png);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
 }
 
 .grid-participation-links {
     background-color: #B0CCBB;
     grid-column: 3 / 4;
     padding: 50px;
+    background-attachment: scroll, scroll, fixed;
+    background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(bamboo.png);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
 }
 
 .grid-footer {
     grid-column: 1 / 4;
     background-color: #C2DBC975;
-    background-image: url("./koi.jpeg"), url("./contours-opaque.png");
-    background-repeat: no-repeat, repeat;
-    background-size: cover, auto;
+    background-attachment: scroll, scroll, fixed;
+    background-color: rgba(138,188,159,0.5);
+    background-image: url(contours-opaque.png), url(gridlines-opaque.png), url(koi.jpeg);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
     padding: 100px;
     text-align: center;
 }
 
 .grid-icons {
     grid-column: 1 / 4;
-    background-color: lawngreen;
+    background-color: #124347;
     top: 100%;
-    padding: 100px;
+    padding: 50px;
     width: 100%;
     margin: auto;
     align-items: center;
@@ -190,35 +285,39 @@ a.download-link:hover {
 .icon-github:before {
     content: "\eab0";
     font-size: 2rem;
-    border: 2px solid black;
+    border: 2px solid #89A1A3;
+    color: #89A1A3;
     border-radius: 100px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .icon-css3:before {
     content: "\eae6";
     font-size: 2rem;
-    border: 2px solid black;
+    border: 2px solid #89A1A3;
+    color: #89A1A3;
     border-radius: 100px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .icon-html-five:before {
     content: "\eae4";
     font-size: 2rem;
-    border: 2px solid black;
+    border: 2px solid #89A1A3;
+    color: #89A1A3;
     border-radius: 100px;
-    padding: 20px;
-    margin: 25px;
+    padding: 15px;
+    margin: 50px;
 }
 
 .icon-wheelchair-alt:before {
     content: "\e900";
     font-size: 2rem;
-    border: 2px solid black;
+    border: 2px solid #89A1A3;
+    color: #89A1A3;
     border-radius: 100px;
-    padding: 20px;
-    margin: 25px;
+    padding: 15px;
+    margin: 50px;
   }
 
 .icon-download:before {
@@ -229,6 +328,16 @@ a.download-link:hover {
     background-color: #D9E1CD;
 }
 
+.main-link {
+    color: #0D8BA1;
+    text-decoration: none;
+}
+
+.main-link:hover {
+    color: #36739D;
+    text-decoration: underline;
+}
+
 .underlined {
     /*border-bottom: dotted 1px black;*/
     text-decoration: underline dotted black;
@@ -237,7 +346,7 @@ a.download-link:hover {
 }
 
 .underlined-title {
-    border-bottom: dotted 2px rgba(255, 255, 255, 0.572);
+    text-decoration: underline dotted 2px rgba(255, 255, 255, 0.572);
     position: relative;
     margin-top: -5px;
 }
@@ -246,3 +355,7 @@ a.download-link:hover {
     padding: 0;
     margin: 0;
 }
+
+.icon-play3:before {
+    content: "\ea1c";
+  }
