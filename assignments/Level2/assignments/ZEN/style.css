@@ -22,17 +22,6 @@ ZEN GARDEN CSS
     padding: 0;
 }
 
-.top-portion {
-    background-color: #1d3f3f;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 10px;
-    border-bottom: 3px solid rgb(16, 37, 37, 0.5);
-}
-
 body, html {
     font-family: "Libre Baskerville", sans-serif;
     font-size: 1rem;
@@ -96,6 +85,12 @@ a.icon-link:hover .icon-css3:before {
     color: #124347;
 }
 
+a.icon-link:hover .icon-git:before {
+    background-color: #89A1A3;
+    opacity: 50%;
+    color: #124347;
+}
+
 a.icon-link:hover .icon-github:before {
     background-color: #89A1A3;
     opacity: 50%;
@@ -111,9 +106,9 @@ a.icon-link:hover .icon-wheelchair-alt:before {
 a.nav-link {
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 0.9em;
+    font-size: 1.1em;
     color:rgba(255, 255, 255, 0.876);
-    padding: 18px 125px;
+    padding: 25px 100px;
     background-color: rgba(255, 255, 255, 0.1);
     position: relative;
     top: 45%;
@@ -121,6 +116,15 @@ a.nav-link {
     text-align: left;
     display: inline-block;
     margin-right: 77px;
+    transition: background-color linear 0.2s;
+}
+
+a.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 a.work-title {
@@ -244,13 +248,16 @@ li.participate-link:last-child {
 ul {
     list-style: none;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 span.navlink {
     display: flex;
     position: relative;
     top: 40%;
-    width: auto;
+    overflow: auto;
 }
 
 .arrow {
@@ -258,6 +265,7 @@ span.navlink {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     margin-left: 2px;
+    transition: background-color linear 0.2s;
 }
 
 .bamboo-bg {
@@ -346,6 +354,21 @@ span.navlink {
     background-size: auto, auto, cover;
 }
 
+.grid-req {
+    background-color: white;
+    grid-column: 1 / 3;
+    padding: 50px;
+    text-align: center;
+    padding-left: 175px;
+    padding-right: 100px;
+}
+
+.grid-req-space {
+    background-color: #E5EDE8;
+    grid-column: 3 / 4;
+    padding: 50px 70px 0px 85px;
+}
+
 .grid-footer {
     grid-column: 1 / 4;
     background-color: #C2DBC975;
@@ -362,11 +385,17 @@ span.navlink {
     grid-column: 1 / 4;
     background-color: #124347;
     top: 100%;
-    padding: 50px;
     width: 100%;
     margin: auto;
     align-items: center;
-    padding: 75px 150px 75px 0;
+    padding: 75px 250px 75px 10px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-flow: row;
 }
 
 /* icons */
@@ -398,7 +427,6 @@ span.navlink {
     color: #89A1A3;
     border-radius: 100px;
     padding: 15px;
-    margin: 75px;
     transition: all linear 0.2s;
 }
 
@@ -409,7 +437,6 @@ span.navlink {
     color: #89A1A3;
     border-radius: 100px;
     padding: 15px;
-    margin: 75px;
     transition: all linear 0.2s;
   }
 
@@ -421,6 +448,16 @@ span.navlink {
     background-color: #D9E1CD;
 }
 
+.icon-git:before {
+    content: "\eae7";
+    font-size: 2rem;
+    border: 2px solid #89A1A3;
+    color: #89A1A3;
+    border-radius: 100px;
+    padding: 15px;
+    transition: all linear 0.2s;
+  }
+
 .main-link {
     color: #0D8BA1;
     text-decoration: none;
@@ -429,6 +466,17 @@ span.navlink {
 .main-link:hover {
     color: #0D8BA1;
     text-decoration: underline;
+}
+
+.top-portion {
+    background-color: #1d3f3f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 10px;
+    border-bottom: 3px solid rgb(16, 37, 37, 0.5);
 }
 
 .underlined {
@@ -459,4 +507,114 @@ span.navlink {
 
 .icon-play3:before {
     content: "\ea1c";
-  }
+    font-size: 2em;
+}
+
+@media only screen and (max-width: 1130px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 150px 55px auto auto auto auto auto auto auto;
+    }
+    .grid-nav {
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+        padding: 0;
+        margin: 0;
+    }
+    .grid-nav-links {
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+        margin: 0;
+        padding: 0;
+    }
+    .grid-about-main {
+        grid-row: 3 / 4;
+        grid-column: 1 / 4;
+        padding-left: 100px;
+    }
+    .grid-participation {
+        grid-row: 4 / 5;
+        grid-column: 1 / 4;
+        padding-left: 100px;
+    }
+    .grid-req {
+        grid-row: 5 / 6;
+        grid-column: 1 / 4;
+        padding-left: 100px;
+    }
+    .grid-req-space {
+        display: none;
+    }
+    .grid-footer {
+        grid-row: 6 / 7;
+        grid-column: 1 / 4;
+        padding: 50px;
+    }
+    .grid-icons {
+        grid-row: 7 / 8;
+        grid-column: 1 / 4;
+        padding: 50px;
+    }
+    .grid-about-authors {
+        grid-row: 8 / 9;
+        grid-column: 1 / 4;
+        grid-auto-flow: row;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .grid-participation-links {
+        grid-row: 9 / 10;
+        grid-column: 1 / 4;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    span.navlink {
+        top: 0;
+        width: 100%;
+    }
+    ul {
+        flex-direction: row;
+        padding-left: 10px;
+        margin: 0;
+        width: 100%;
+    }
+    li {
+        flex: 0 0 50%;
+    }
+    img {
+        height: 70%;
+        margin: 0;
+        padding: 0;
+        left: 30%;
+        transform: translate(-50%, -50%);
+    }
+    h1 {
+        padding: 0;
+        font-size: 2em;
+        top: 30%;
+        left: 75%;
+        transform: translate(-50%, 0);
+    }
+    p {
+        font-size: 0.85em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .icon-github:before {
+        font-size: 1em;
+    }
+    .icon-css3:before {
+        font-size: 1em;
+    }
+    .icon-git:before {
+        font-size: 1em;
+    }
+    .icon-html-five:before {
+        font-size: 1em;
+    }
+    .icon-wheelchair-alt:before {
+        font-size: 1em;
+    }
+}
