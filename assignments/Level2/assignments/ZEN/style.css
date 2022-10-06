@@ -169,6 +169,7 @@ h2 {
     text-align: left;
     font-size: 1.75em;
     font-weight: lighter;
+    color: #2E484C;
 }
 
 h2::after {
@@ -197,7 +198,7 @@ p {
 /*     padding: 0px 0 0 50px; */
     font-size: 1em;
     text-align: left;
-    line-height: 2.0;
+    line-height: 2;
     color: #435B5E;
     padding-top: 10px;
 }
@@ -207,12 +208,12 @@ p::before {
 }
 
 p.authors-p {
-    font-size: 1em;
+    font-size: 0.7em;
     color: black;
 }
 
 p.authors-p::before {
-    content: '\A';
+    content: '\a';
 }
 
 p.footer-text {
@@ -325,7 +326,7 @@ span.navlink {
 .grid-about-authors {
     background-color: #E5EDE8;
     grid-column: 3 / 4;
-    padding: 50px 70px 0px 85px;
+    padding: 30px 70px 0px 93px;
 }
 
 .grid-participation {
