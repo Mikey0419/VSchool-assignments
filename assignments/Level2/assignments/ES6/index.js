@@ -116,3 +116,9 @@ const animals = [
  const animalObj = filterForDogs(animals);
 
  console.log(animalObj);
+
+ /* TEMPLATE LITERAL */
+
+ const printMessage = (location, userName) => console.log('\n', `Hi ${userName}!\n\n Welcome to ${location}.\n\nI hope you enjoy your stay. Please ask the president of ${location} if you need anything.`);
+
+ printMessage("Texas", "Mike");
