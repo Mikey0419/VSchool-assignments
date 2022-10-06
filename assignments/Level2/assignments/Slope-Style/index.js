@@ -71,7 +71,7 @@ function unshift(array, ...arr2) {
     return arr2.concat(array);
 }
   
-console.log(unshift(['dog', 'cat', 'eats'], 'food', 'pizza', 'beer'));
+console.log(unshift(['dog', 'cat', 'eats'], 'food', 'pizza', 'beer'), '\n');
 
 const populatePeople = (names) => { return names.map(name => { const [firstName, lastName] = name.split(" "); return { firstName: firstName, lastName: lastName } });
 }
