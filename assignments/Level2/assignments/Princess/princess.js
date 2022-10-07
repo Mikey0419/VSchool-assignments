@@ -55,7 +55,7 @@ class Player {
     setName = (namePicked) => this.name = namePicked;
 }
 
-const hero = new Player(0, 'Big', false);
+const hero = new Player();
 hero.setName("Mario");
 hero.print();
 
