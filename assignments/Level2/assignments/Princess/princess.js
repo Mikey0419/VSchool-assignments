@@ -13,10 +13,6 @@ class Player {
     addCoin() {
         this.totalCoins++;
     }
-    print() {
-        let starMsg = (this.hasStar) ? "⭐️ You have a Star ⭐️\n" : '';
-        console.log(`\nName: ${this.name}\nStatus: ${this.status}\nTotal Coins: ${this.totalCoins}\n${starMsg}`);
-    }
     gotHit() {
         if (this.hasStar) {
             this.hasStar = false;
@@ -51,6 +47,10 @@ class Player {
                 this.status = 'Big';
                 break;
         }
+    }
+    print() {
+        let starMsg = (this.hasStar) ? "⭐️ You have a Star ⭐️\n" : '';
+        console.log(`\nName: ${this.name}\nStatus: ${this.status}\nTotal Coins: ${this.totalCoins}\n${starMsg}`);
     }
     setName = (namePicked) => this.name = namePicked;
 }
