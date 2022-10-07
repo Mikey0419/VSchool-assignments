@@ -2,12 +2,10 @@ console.clear();
 
 let intervalID;
 
-const getRandom = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-} //generates 0, 1, or 2
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min); //generates 0, 1, or 2
 
 class Player {
-    constructor(totalCoins, status, hasStar) {
+    constructor(totalCoins = 0, status = 'Big', hasStar = false) {
         this.totalCoins = totalCoins;
         this.status = status;
         this.hasStar = hasStar;
@@ -19,7 +17,6 @@ class Player {
         let starMsg = (this.hasStar) ? "⭐️ You have a Star ⭐️\n" : '';
         console.log(`\nName: ${this.name}\nStatus: ${this.status}\nTotal Coins: ${this.totalCoins}\n${starMsg}`);
     }
-    setName(namePicked) { this.name = namePicked; }
     gotHit() {
         if (this.hasStar) {
             this.hasStar = false;
@@ -55,6 +52,7 @@ class Player {
                 break;
         }
     }
+    setName = (namePicked) => this.name = namePicked;
 }
 
 const hero = new Player(0, 'Big', false);
@@ -66,15 +64,15 @@ const play = () => {
 
     switch(num) {
         case 0:
-            console.log("\t\t\tYou took a hit!");
+            //console.log("\t\t\tYou took a hit!");
             hero.gotHit();
             break;
         case 1:
-            console.log("\t\t\tPower up!");
+            //console.log("\t\t\tPower up!");
             hero.gotPowerup();
             break;
         case 2:
-            console.log("\t\t\tMore coins!");
+            //console.log("\t\t\tMore coins!");
             hero.addCoin();
             break;
     }
