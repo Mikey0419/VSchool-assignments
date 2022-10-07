@@ -16,12 +16,17 @@ class Player {
         this.totalCoins++;
     }
     print() {
-        let starMsg = (this.hasStar) ? "You have a Star\n" : '';
+        let starMsg = (this.hasStar) ? "⭐️ You have a Star ⭐️\n" : '';
         console.log(`\nName: ${this.name}\nStatus: ${this.status}\nTotal Coins: ${this.totalCoins}\n${starMsg}`);
     }
     setName(namePicked) { this.name = namePicked; }
     gotHit() {
-        (this.hasStar) ? (this.hasStar = false, console.log("Your star protected you!"), this.print()) : '';
+        if (this.hasStar) {
+            this.hasStar = false;
+            console.log("Your star protected you!");
+            return;
+        }
+        
         switch (this.status) {
             case 'Powered up':
                 this.status = 'Big';
@@ -35,10 +40,12 @@ class Player {
         }
     }
     gotPowerup() {
+        if(this.hasStar) { return; }
+
         switch (this.status) {
             case 'Powered up':
                 this.hasStar = true;
-                console.log("Congratulations!  You got a star!");
+                console.log("\t\t\tCongratulations!  You got a star!\n");
                 break;
             case 'Big':
                 this.status = 'Powered up';
@@ -52,21 +59,22 @@ class Player {
 
 const hero = new Player(0, 'Big', false);
 hero.setName("Mario");
+hero.print();
 
 const play = () => {
     let num = getRandom(0, 3);
 
     switch(num) {
         case 0:
-            console.log("\t\t\tYou took a hit!\n");
+            console.log("\t\t\tYou took a hit!");
             hero.gotHit();
             break;
         case 1:
-            console.log("\t\t\tPower up!\n");
+            console.log("\t\t\tPower up!");
             hero.gotPowerup();
             break;
         case 2:
-            console.log("\t\t\tMore coins!\n");
+            console.log("\t\t\tMore coins!");
             hero.addCoin();
             break;
     }
@@ -74,4 +82,4 @@ const play = () => {
     hero.print();
 }
 
-intervalID = setInterval(play, 1500);
+intervalID = setInterval(play, 1000);
