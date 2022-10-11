@@ -1,0 +1,156 @@
+{
+    "appetizers": [
+        {
+            "name": "tater tots",
+            "ingredients": [
+                "potato",
+                "oil",
+                "pepper",
+                "salt",
+                "ketchup"
+            ],
+            "description": "Crispy, golden tater tots served with delicious, fresh ketchup"
+        },
+        {
+            "name": "guacamole dip",
+            "ingredients": [
+                "avocado",
+                "cayenne",
+                "cilantro",
+                "lime",
+                "garlic",
+                "salt",
+                "plum tomatoes",
+                "cayenne pepper",
+                "tortilla chips"
+            ],
+            "description": "Creamy guacamole with kick of cayenne and cilantro, served with home made, crispy tortilla chips"
+        },
+        {
+            "name": "baked kale chips",
+            "ingredients": [
+                "kale",
+                "olive oil",
+                "flaked sea salt"
+            ],
+            "description": "Crispy, baked, fresh kale with olive oil and flaked sea salt"
+        }
+    ],
+    "cold-sandwiches": [
+        {
+            "name": "cold cut combo",
+            "ingredients": [
+                "white bread",
+                "cheddar cheese",
+                "turkey",
+                "ham",
+                "salami",
+                "mustard",
+                "mayo",
+                "lettuce",
+                "tomato",
+                "onion"
+            ],
+            "description": "Turkey, ham, and salami served on white bread with mustard, mayo, lettuce, tomatoes, and onions"
+        },
+        {
+            "name": "BLT",
+            "ingredients": [
+                "white bread",
+                "cheddar cheese",
+                "bacon",
+                "lettuce",
+                "tomato",
+                "mayo"
+            ],
+            "description": "Bacon, lettuce, and tomato sandwhich served on white bread with mayo"
+        },
+        {
+            "name": "Ham and turkey",
+            "ingredients": [
+                "white bread",
+                "cheddar cheese",
+                "ham",
+                "turkey",
+                "lettuce",
+                "tomato",
+                "mayo"
+            ],
+            "description": "Ham and turkey sandwhich served on white break with lettuce, tomato, and mayo"
+        }
+    ],
+    "hot-sandwiches": [
+        {
+            "name": "Chicken Parmesan",
+            "ingredients": [
+                "chicken parmesan",
+                "mozzerella cheese",
+                "black pepper",
+                "marinara sauce",
+                "garlic cheese bread"
+            ],
+            "description": "Hot chicken parmesan on garlic cheese bread"
+        },
+        {
+            "name": "Pizza Sandwich",
+            "ingredients": [
+                "pepperoni",
+                "american cheese",
+                "sausage",
+                "marinara sauce",
+                "toasted white bread"
+            ],
+            "description": "Pepperoni and sausage pizza on toasted white bread with american cheese"
+        }
+    ],
+    "desserts": [
+        {
+            "name": "Sizzling Apple Crisp",
+            "ingredients": [
+                "apples",
+                "sugar",
+                "unsalted butter",
+                "flour",
+                "cinammon",
+                "nutmeg",
+                "vanilla bean ice cream"
+            ],
+            "description": "Delicious, toasty cinammon apple crisp served with a heavy helping of vanilla bean ice cream"
+        },
+        {
+            "name": "Volcano Brownie",
+            "ingredients": [
+                "brownie",
+                "chocolate syrup",
+                "unsalted butter",
+                "flour",
+                "cinammon",
+                "caramel sauce",
+                "sugar",
+                "vanilla extract",
+                "whipped cream"
+            ],
+            "description": "Decadent, warm volcano brownie ready to erupt with chocolaty flavor"
+        }
+    ],
+    "drinks": [
+        {
+            "name": "Coca Cola",
+            "ingredients": [
+                "coca cola secret recipe",
+                "ice",
+                "sugar"
+            ],
+            "description": "Ice cold refreshing coca cola"
+        },
+        {
+            "name": "Diet Coca Cola",
+            "ingredients": [
+                "diet coca cola secret recipe",
+                "ice",
+                "aspartame"
+            ],
+            "description": "Ice cold refreshing diet coca cola for those on a calorie budget"
+        }
+    ]
+}
