@@ -1,5 +1,12 @@
+//const { default: axios } = require("axios");
 
 const cardContainer = document.getElementById("container");
+
+//hold previous form element values for PUT
+let prevTitle;
+let prevDescription;
+let prevPrice;
+let prevImage;
 
 /* overlay elements */
 const overlayDIV = document.getElementById("overlay");
@@ -7,6 +14,7 @@ const addITEM = document.getElementById("ul_addITEM");
 const overlayFormDIV = document.getElementById("overlay_form");
 const exit = document.querySelector('.overlay_exit');
 const cancelButton = document.getElementById("cancelButton");
+const saveButton = document.querySelector('.save');
 
 /* default image */
 const defaultImage = "https://i0.wp.com/shahpourpouyan.com/wp-content/uploads/2018/10/orionthemes-placeholder-image-1.png?w=1738&ssl=1";
@@ -18,9 +26,9 @@ const formDescription = form.form_description;
 const formPrice = form.form_price;
 const formImage = form.form_image;
 
-/* card elements */
+/* /* card elements 
 const completedCheckbox = document.querySelector('.my_checkbox');
-const cardTitle = document.getElementById("cardTitle");
+const cardTitle = document.getElementById("cardTitle"); */
 
 /* show/hide overlay div */
 const show = () => {
@@ -37,181 +45,215 @@ const hide = () => {
 
 // create DOM elements and display on screen
 const render = (data) => {
+
+    //remove all elements first
+    const elements = document.querySelectorAll('.card');
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].remove();
+    }
+
     data.map(item => {
-        console.log("rendering", item.imgUrl, item.price, item.title);
-    //create the card div and add class 'card'
-    const cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
 
-    //create image for card div and assign data imgUrl
-    const cardImg = document.createElement("img");
-    cardImg.setAttribute("src", item.imgUrl);
+        //create the card div and add class 'card'
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
 
-    //create the card_text div and add class 'card_text'
-    const cardTextDiv = document.createElement("div");
-    cardTextDiv.classList.add('card_text');
+        //create image for card div and assign data imgUrl
+        const cardImg = document.createElement("img");
+        cardImg.setAttribute("src", item.imgUrl);
 
-    //create h2 element, add 'cardTitle' id and add data item title 
-    const cardTitleH2 = document.createElement("h2");
-    cardTitleH2.setAttribute("id", "cardTitle");
-    cardTitleH2.textContent = item.title;
+        //create the card_text div and add class 'card_text'
+        const cardTextDiv = document.createElement("div");
+        cardTextDiv.classList.add('card_text');
 
-    //create p element, add 'cardDescription' id and add data description
-    const cardDescP = document.createElement("p");
-    cardDescP.setAttribute("id", "cardDescription");
-    cardDescP.textContent = item.description;
+        //create h2 element, add 'cardTitle' id and add data item title 
+        const cardTitleH2 = document.createElement("h2");
+        cardTitleH2.setAttribute("id", "cardTitle");
+        cardTitleH2.textContent = item.title;
 
-    //create p element, add class 'price' and set data price
-    const cardPriceP = document.createElement("p");
-    cardPriceP.classList.add('price');
-    cardPriceP.textContent = `$${item.price}`;
+        //create p element, add 'cardDescription' id and add data description
+        const cardDescP = document.createElement("p");
+        cardDescP.setAttribute("id", "cardDescription");
+        cardDescP.textContent = item.description;
 
-    /// create input checkbox
-    const cardCheckbox = document.createElement("input");
-    cardCheckbox.setAttribute("type", "checkbox");
-    cardCheckbox.classList.add('my_checkbox');
-    cardCheckbox.setAttribute("name", "completed");
+        //create p element, add class 'price' and set data price
+        const cardPriceP = document.createElement("p");
+        cardPriceP.classList.add('price');
+        cardPriceP.textContent = `$${item.price}`;
 
-    /// create label for input checkbox
-    const labelForCheckbox = document.createElement("label");
-    labelForCheckbox.setAttribute("for", "completed");
-    labelForCheckbox.textContent = 'Completed';
+        /// create input checkbox
+        const cardCheckbox = document.createElement("input");
+        cardCheckbox.setAttribute("type", "checkbox");
+        cardCheckbox.classList.add('my_checkbox');
+        cardCheckbox.setAttribute("name", "completed");
 
-    //create the card_buttons div and add class 'card_buttons'
-    const cardButtonsDiv = document.createElement("div");
-    cardButtonsDiv.classList.add('card_buttons');
+        /// create label for input checkbox
+        const labelForCheckbox = document.createElement("label");
+        labelForCheckbox.setAttribute("for", "completed");
+        labelForCheckbox.textContent = 'Completed';
 
-    /// create edit button
-    const editButton = document.createElement("button");
-    editButton.classList.add('edit');
-    editButton.setAttribute("id", item._id);
+        //create the card_buttons div and add class 'card_buttons'
+        const cardButtonsDiv = document.createElement("div");
+        cardButtonsDiv.classList.add('card_buttons');
 
-    /// create delete button
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add('delete');
-    deleteButton.setAttribute("id", item._id);
+        /// create edit button
+        const editButton = document.createElement("button");
+        editButton.classList.add('edit');
+        editButton.setAttribute("id", item._id);
 
-    ///create edit icon
-    const editIcon = "<span class='icon-edit-pencil'></span> EDIT";
+        /// create delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add('delete');
+        deleteButton.setAttribute("id", item._id);
 
-    ///create delete icon
-    const deleteIcon = "<span class='icon-bin2'></span> DELETE";
+        ///create edit icon
+        const editIcon = "<span class='icon-edit-pencil'></span> EDIT";
 
-    /// append icons to buttons
-    editButton.innerHTML = editIcon;
-    deleteButton.innerHTML = deleteIcon;
+        ///create delete icon
+        const deleteIcon = "<span class='icon-bin2'></span> DELETE";
 
-    // add event listeners to respective buttons
+        /// append icons to buttons
+        editButton.innerHTML = editIcon;
+        deleteButton.innerHTML = deleteIcon;
 
-    deleteButton.addEventListener('click', () => {
-        console.log(`DELETE: ${item._id}`);
+        // add event listeners to respective buttons
+
+        deleteButton.addEventListener('click', () => {
+            console.log(`DELETE: ${item._id}`);
+
+            deleteTodo(item._id);
+        })
+
+        editButton.addEventListener('click', () => {
+            console.log(`EDIT: ${item._id}`);
+
+            //populate form input textboxes with data
+            formTitle.value = item.title; prevTitle = item.title;
+            formDescription.value = item.description; prevDescription = item.description;
+            formPrice.value = item.price; prevPrice = item.price;
+            formImage.value = item.imgUrl; prevImage = item.imgUrl;
+
+            //show the form
+            show();
+
+            //add event listener for form submit to call updateTodo(id)
+            form.addEventListener('submit', (e) => {
+                console.log("SUBMIT EDIT");
+                //see if input values are different --> if so, PUT new values in
+                if((prevTitle === formTitle.value) && (prevDescription = formDescription.value) && (prevPrice === formPrice.value) && (prevImage === formImage.value)) {
+                    console.log(`No changes made to id ${item._id}: values are the same.`);
+                    form.reset();
+                    
+                    return;
+                } else {
+                    console.log(`**UPDATING ${item._id} **`);
+                    updateTodo(item._id);
+                    //form.removeEventListener('submit', updateTodo);
+                }
+            })
+        })
+
+        cardCheckbox.addEventListener('click', () => {
+            (cardCheckbox.checked) ? (cardTitleH2.style.textDecoration = "line-through") : (cardTitleH2.style.textDecoration = "none");
+        })
+
+        cardTextDiv.append(cardTitleH2)
+        cardTextDiv.append(cardDescP)
+        cardTextDiv.append(cardPriceP)
+        cardTextDiv.append(cardCheckbox)
+        cardTextDiv.append(labelForCheckbox)
+
+        cardButtonsDiv.append(editButton)
+        cardButtonsDiv.append(deleteButton)
+
+        cardDiv.append(cardImg)
+        cardDiv.append(cardTextDiv)
+        cardDiv.append(cardButtonsDiv)
+
+        cardContainer.append(cardDiv);
     })
-
-    editButton.addEventListener('click', () => {
-        console.log(`EDIT: ${item._id}`);
-    })
-
-    cardCheckbox.addEventListener('click', () => {
-        (cardCheckbox.checked) ? (cardTitleH2.style.textDecoration = "line-through") : (cardTitleH2.style.textDecoration = "none");
-    })
-
-    cardTextDiv.append(cardTitleH2)
-    cardTextDiv.append(cardDescP)
-    cardTextDiv.append(cardPriceP)
-    cardTextDiv.append(cardCheckbox)
-    cardTextDiv.append(labelForCheckbox)
-
-    cardButtonsDiv.append(editButton)
-    cardButtonsDiv.append(deleteButton)
-
-    cardDiv.append(cardImg)
-    cardDiv.append(cardTextDiv)
-    cardDiv.append(cardButtonsDiv)
-
-    cardContainer.append(cardDiv);})
 }
 
 // PART 1 - GET data
 const getTodo = () => {
+    hide();
+
     axios.get("https://api.vschool.io/michaelhardin/todo")
-        .then(res => {
-            console.log(res.data);
-            render(res.data); })
+        .then(res => render(res.data))
         .catch(err => console.log(err))
-} //axios.get()
+}
 
 // PART 2 - POST data
 const createTodo = () => {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-    
+    show();
+
+    saveButton.addEventListener('click', () => {
         const newTodo = {};
 
         newTodo.title = formTitle.value;
         newTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
         newTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
-        newTodo.price = (formPrice.value === '') ? "0" : formPrice.value;
+        newTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
     
         axios.post("https://api.vschool.io/michaelhardin/todo", newTodo)
             .then(res => {
-                console.log(res);
-    
-                const elements = document.querySelectorAll('.card');
-                for (let i = 0; i < elements.length; i++) {
-                    elements[i].remove();
-                }
-    
-                formTitle.value = '';
-                formDescription.value = '';
-                formImage.value = '';
-                formPrice.value = '';
-
-                hide();
-    
+                console.log("POSTED");
+                form.reset();
                 getTodo();
             })
             .catch(err => console.log(err))
-    });
+    })
 } //axios.post()
 
 // PART 3 - PUT data
-const updateTodo = () => {} //axios.put()
+const updateTodo = (id) => {
+    const updatedTodo = {};
+
+    updatedTodo.title = formTitle.value;
+    updatedTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
+    updatedTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
+    updatedTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
+
+    axios.put(`https://api.vschool.io/michaelhardin/todo/${id}`, updatedTodo)
+        .then(res => {
+            console.log("UPDATED");
+            form.reset();
+            getTodo();
+        })
+        .catch(err => console.log(err))
+} //axios.put()
 
 // PART 4 - DELETE data
 const deleteTodo = (id) => {
     axios.delete(`https://api.vschool.io/michaelhardin/todo/${id}`)
     .then(res => {
-        console.log(res); //log deletion in console
-
-        const elements = document.querySelectorAll('.card'); //remove elements from screen
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].remove();
-        }
-
-        render();
+        console.log("DELETED"); //log deletion in console
+        getTodo();
     })
     .catch(err => console.log(err))
 }
 
 /* DOM interaction */
 
-completedCheckbox.addEventListener('click', () => {
+/* completedCheckbox.addEventListener('click', () => {
     (completedCheckbox.checked) ? (cardTitle.style.textDecoration = "line-through") : (cardTitle.style.textDecoration = "none");
-})
+}) */
 
-addITEM.addEventListener('click', () => {
-    show();
-});
+addITEM.addEventListener('click', createTodo);
 
 exit.addEventListener('click', () => {
     hide();
 });
 
+//hitting cancel button clears form and hides overlay
 cancelButton.addEventListener('click', () => {
     formTitle.value = '';
     formDescription.value = '';
     formPrice.value = '';
     formImage.value = '';
+
+    form.reset();
+
     hide();
 })
 

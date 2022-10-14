@@ -64,7 +64,7 @@ const update = (id) => {
             form.imgUrl.value = '';
             form.style.visibility = "hidden";
 
-            render();
+            getTodo();
         })
         .catch(err => console.log(err))
 }
@@ -86,5 +86,5 @@ form.addEventListener("submit", (e) => {
         form.style.visibility = "hidden";
 
         return;
-    } else { update(elementID) };
+    } else { update(elementID) }
 })
