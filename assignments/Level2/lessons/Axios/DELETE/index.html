@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body {
+            font-family: 'Fira Code', monospace;
+        }
+        .itemDIV {
+            width: 100px;
+            height: 100px;
+            padding: 0;
+            border: 2px solid black;
+            border-radius: 7px;
+        }
+        img {
+            position: relative;
+            top: -52px;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+        }
+        p {
+            position: relative;
+            top: -12px;
+            width: 100%;
+            left: 0;
+            transform: translate(20%, 0);
+            z-index: 2;
+        }
+        #container {
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: repeat(6, 120px);
+            grid-gap: 20px;
+            position: absolute;
+            margin-top: 50px;
+            left: 50%; top: 30%;
+            transform: translate(-50%, -50%);
+        }
+        form {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <form name="todoform">
+        <input name="title" placeholder="Title"/>
+        <input name="description" placeholder="Description"/>
+        <input name="imgUrl" placeholder="Image Url"/>
+        <button>Submit</button>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+</body>

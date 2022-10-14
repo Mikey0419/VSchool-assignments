@@ -1,6 +1,3 @@
-//const { default: axios } = require("axios");
-
-//const axios = require('axios').default;
 let parentDIV = document.getElementById("container");
 const element = document.querySelector('.itemDIV');
 
@@ -26,19 +23,16 @@ const render = () => {
             el.addEventListener("click", (e) => {
                 console.log(e.target.parentNode.childNodes[0]);
 
-                form.style.visibility = "visible";
                 console.log('clicked:', el.getAttribute("id"));
                 elementID = el.getAttribute("id");
 
-                form.title.value = item.title; prevTitle = item.title;
-                form.description.value = item.description; prevDesc = item.description;
-                form.imgUrl.value = item.imgUrl; prevImg = item.imgUrl;
+                deleteItem(elementID);
             })
         }))
         .catch(err => console.log(err))
 }
 
-const update = (id) => {
+/* const update = (id) => {
     const newITEM = {};
 
     console.log(`Previous Title: ${prevTitle}, Previous Image: ${prevImg}\n`);
@@ -67,11 +61,25 @@ const update = (id) => {
             render();
         })
         .catch(err => console.log(err))
-}
+} */
 
 render();
 
-form.addEventListener("submit", (e) => {
+const deleteItem = (id) => {
+    axios.delete(`https://api.vschool.io/michaelhardin/todo/${id}`)
+    .then(res => {
+        console.log(res);
+        const elements = document.querySelectorAll('.itemDIV');
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].remove();
+        }
+
+        render();
+    })
+    .catch(err => console.log(err))
+}
+
+/* form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(prevTitle === form.title.value);
     console.log(prevDesc === form.description.value);
@@ -87,4 +95,4 @@ form.addEventListener("submit", (e) => {
 
         return;
     } else { update(elementID) };
-})
+}) */

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://i.icomoon.io/public/4424e40e1c/css-zen-garden/style.css">
+</head>
+<body>
+    <div id="overlay">
+        <div class="overlay_exit"><span class="icon-cross"></span></div>
+        <div id="overlay_form">
+            <div class="card_text">
+                <form name="todo_add_edit">
+                    <label for="textbox_title">Title</label>
+                    <input id="textbox_title" type="text" name="form_title" required />
+                    <label for="textbox_desc">Description</label>
+                    <input id="textbox_desc" type="text" name="form_description" />
+                    <label for="textbox_price">Price</label>
+                    <input id="textbox_price" type="text" name="form_price" />
+                    <label for="textbox_img">Image URL</label>
+                    <input id="textbox_img" type="text" name="form_image" />
+                </form>
+            </div>
+            <div class="form_card_buttons">
+                <button id="cancelButton" class="delete"><span class="icon-cancel-circle"></span> CANCEL</button>
+                <button class="save"><span class="icon-floppy-disk"></span> SAVE</button>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <ul id="ul_addITEM">
+            <li><span class="icon-plus"></span></li>
+            <li class="add_item">Add item</li>
+        </ul>
+    </div>
+    <div id="container">
+        <div class="card">
+            <img width="200" height="100" src="https://r1.ilikewallpaper.net/ipad-air-wallpapers/download/24199/Nature-Autumn-Red-Leaf-Calm-Lake-Landscape-ipad-air-wallpaper-ilikewallpaper_com.jpg" />
+            <div class="card_text">
+                <h2 id="cardTitle">Title</h2>
+                <p id="cardDescription">Description</p>
+                <p class="price">$100</p>
+                <input class="my_checkbox" type="checkbox" name="completed" />
+                <label for="completed">Completed</label>
+            </div>
+            <div class="card_buttons">
+                <button class="edit"><span class="icon-edit-pencil"></span> EDIT</button>
+                <button class="delete"><span class="icon-bin2"></span> DELETE</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+</body>

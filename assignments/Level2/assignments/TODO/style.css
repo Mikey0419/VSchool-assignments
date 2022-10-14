@@ -1,0 +1,246 @@
+* {
+    font-family: 'Fira Code', monospace;
+}
+
+h2 {
+    text-decoration: none;
+}
+
+body {
+    background-image: linear-gradient( 135deg, #FFF886 10%, #F072B6 100%);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8em;
+}
+
+button {
+    padding: 0.9em 1.3em;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    position: relative;
+}
+
+button.edit {
+    /* background: rgb(77,152,223); */
+    background-image: linear-gradient(0deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
+}
+
+button.edit:hover {
+    /* background: rgb(77,152,223); */
+    background-image: linear-gradient(180deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
+}
+
+button.delete {
+    background: rgb(255,11,11);
+    background: linear-gradient(0deg, rgba(255,11,11,1) 24%, rgba(246,124,124,1) 100%);
+}
+
+button.delete:hover, button.cancel:hover {
+    background: rgb(255,11,11);
+    background: linear-gradient(180deg, rgba(255,11,11,1) 24%, rgba(246,124,124,1) 100%);
+}
+
+button.save {
+    background: linear-gradient(180deg, rgba(55,233,46,0.9178265056022409) 0%, rgba(5,142,13,1) 100%);
+}
+
+button.save:hover {
+    background: linear-gradient(0deg, rgba(55,233,46,0.9178265056022409) 0%, rgba(5,142,13,1) 100%);
+}
+
+label {
+    padding-left: 10px;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.overlay_exit {
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    transform: translate(75%, 75%);
+    cursor: pointer;
+}
+
+.overlay_exit:hover .icon-cross:before {
+    color: rgba(255, 255, 255, 1.0);
+}
+
+#overlay_form {
+    width: 350px;
+    padding: 3em 1.5em 1em 1.7em;
+    position: absolute;
+    visibility: hidden;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 0.5em;
+    background-color: #fefefe;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      0 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+input[type="text"] {
+    margin: 5px 0 20px 10px;
+    width: 90%;
+    height: 30px;
+    font-size: 1.5em;
+}
+
+/* input[type="text"]:nth-child(2) {
+    margin-top: 20px;
+} */
+
+img {
+    border-radius: 0.5em 0.5em 0 0;
+    width: 250px;
+    height: 150px;
+}
+
+ul li{
+    display: inline;
+    list-style: none;
+    vertical-align: middle;
+    transition: all 0.2s linear;
+}
+
+ul {
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.add_item {
+    font-size: 1.5em;
+    color: rgb(63, 144, 63);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card_text h2 {
+    margin-bottom: 0.3em;
+    font-size: 1.4em;
+    color: #6f6f6f;
+}
+  
+.card_text p {
+    margin: 0;
+    color: #999;
+    font-size: 0.95em;
+}
+
+.card_text p.price {
+    color: rgb(18, 123, 18);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0.3em;
+}
+
+.card {
+    padding: 0em;
+    border-radius: 0.8em;
+    background-color: #fefefe;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+      0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      0 100px 80px rgba(0, 0, 0, 0.07);
+    position: relative;
+    font-family: 'Fira Code', monospace;
+}
+
+.card_buttons {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Fira Code', monospace;
+}
+
+.form_card_buttons {
+    margin: 1em;
+    display: flex;
+    justify-content:space-around;
+}
+
+.my_checkbox {
+    margin-top: 1.5em;
+    position: relative;
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100vw;
+    background-color: rgb(31, 31, 31);
+}
+
+/* icons */
+
+.icon-plus:before {
+    content: "\e903";
+    font-size: 1.5em;
+    color: rgb(63, 144, 63);
+    transition: all 0.2s linear;
+}
+
+ul:hover li, ul:hover .icon-plus:before {
+    transform: rotate(-45deg);
+    color: rgb(0, 255, 136);
+}
+
+.icon-bin2:before {
+    content: "\e9ad";
+    font-size: 1.3em;
+}
+
+.icon-edit-pencil:before {
+    content: "\e904";
+    font-size: 1.3em;
+}
+
+.icon-cross:before {
+    content: "\ea0f";
+    font-size: 3em;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.2s linear;
+}
+
+.icon-floppy-disk:before {
+    content: "\e962";
+    font-size: 1.3em;
+}
+
+.icon-cancel-circle:before {
+    content: "\ea0d";
+    font-size: 1.3em;
+}
