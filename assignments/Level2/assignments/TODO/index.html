@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://i.icomoon.io/public/4424e40e1c/css-zen-garden/style.css">
 </head>
 <body>
+    <!--- overlay for edit button -->
     <div id="overlay">
         <div class="overlay_exit"><span class="icon-cross"></span></div>
         <div id="overlay_form">
@@ -18,6 +19,7 @@
                         <input id="textbox_price" type="text" name="form_price" />
                         <label for="textbox_img">Image URL</label>
                         <input id="textbox_img" type="text" name="form_image" />
+                        <input type="hidden" name="itemID" />
                 </div>
                 <div class="form_card_buttons">
                     <button id="cancelButton" class="delete"><span class="icon-cancel-circle"></span> CANCEL</button>
@@ -26,6 +28,31 @@
             </form>
         </div>
     </div>
+
+    <!-- overlay for add item -->
+    <div id="overlay2">
+        <div class="overlay_exit2"><span class="icon-cross"></span></div>
+        <div id="overlay_form2">
+            <form name="form_add">
+                <div class="card_text">
+                    <label for="textbox_title2">Title</label>
+                        <input id="textbox_title2" type="text" name="form_title2" required />
+                        <label for="textbox_desc2">Description</label>
+                        <input id="textbox_desc2" type="text" name="form_description2" />
+                        <label for="textbox_price2">Price</label>
+                        <input id="textbox_price2" type="text" name="form_price2" />
+                        <label for="textbox_img2">Image URL</label>
+                        <input id="textbox_img2" type="text" name="form_image2" />
+                </div>
+                <div class="form_card_buttons">
+                    <button id="cancelButton2" class="delete"><span class="icon-cancel-circle"></span> CANCEL</button>
+                    <button class="create"><span class="icon-plus"></span> CREATE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- nav bar -->
     <div class="nav">
         <ul id="ul_addITEM">
             <li><span class="icon-plus"></span></li>
@@ -51,3 +78,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./index.js"></script>
 </body>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

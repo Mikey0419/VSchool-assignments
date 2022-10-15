@@ -1,5 +1,3 @@
-//const { default: axios } = require("axios");
-
 let createTrue = true;
 
 const cardContainer = document.getElementById("container");
@@ -10,39 +8,67 @@ let prevDescription;
 let prevPrice;
 let prevImage;
 
-/* overlay elements */
+/* overlay elements for edit form */
 const overlayDIV = document.getElementById("overlay");
 const addITEM = document.getElementById("ul_addITEM");
 const overlayFormDIV = document.getElementById("overlay_form");
 const exit = document.querySelector('.overlay_exit');
+const exitAdd = document.querySelector('.overlay_exit2');
 const cancelButton = document.getElementById("cancelButton");
+const cancelButton2 = document.getElementById("cancelButton2");
 const saveButton = document.querySelector('.save');
+
+/* overlay elements for add item form */
+const overlayDIVadd = document.getElementById("overlay2");
+const overlayFormDIVadd = document.getElementById("overlay_form2");
 
 /* default image */
 const defaultImage = "https://i0.wp.com/shahpourpouyan.com/wp-content/uploads/2018/10/orionthemes-placeholder-image-1.png?w=1738&ssl=1";
 
 /* form elements */
 const form = document.todo_add_edit;
+const formAdd = document.form_add;
+
 const formTitle = form.form_title;
+const formTitle2 = formAdd.form_title2;
+
 const formDescription = form.form_description;
+const formDescription2 = formAdd.form_description2;
+
 const formPrice = form.form_price;
+const formPrice2 = formAdd.form_price2;
+
 const formImage = form.form_image;
+const formImage2 = formAdd.form_image2;
+
+const formItemID = form.itemID;
 
 /* /* card elements 
 const completedCheckbox = document.querySelector('.my_checkbox');
 const cardTitle = document.getElementById("cardTitle"); */
 
 /* show/hide overlay div */
-const show = () => {
+const showEdit = () => {
     overlayDIV.style.visibility = "visible";
     overlayFormDIV.style.visibility = "visible";
     exit.style.visibility = "visible";
 }
 
+const showAdd = () => {
+    overlayDIVadd.style.visibility = "visible";
+    overlayFormDIVadd.style.visibility = "visible";
+    exitAdd.style.visibility = "visible";
+}
+
 const hide = () => {
     exit.style.visibility = "hidden";
+    exitAdd.style.visibility = "hidden";
+
     overlayDIV.style.visibility = "hidden";
+    overlayDIVadd.style.visibility = "hidden";
+
     overlayFormDIV.style.visibility = "hidden";
+    overlayFormDIVadd.style.visibility = "hidden";
 }
 
 // create DOM elements and display on screen
@@ -134,33 +160,15 @@ const render = (data) => {
         editButton.addEventListener('click', () => {
             console.log(`EDIT: ${item._id}`);
 
-            saveButton.removeEventListener('click', createTodo);
-
             //populate form input textboxes with data
             formTitle.value = item.title; prevTitle = item.title;
             formDescription.value = item.description; prevDescription = item.description;
             formPrice.value = item.price; prevPrice = item.price;
             formImage.value = item.imgUrl; prevImage = item.imgUrl;
+            formItemID.value = item._id;
 
             //show the form
-            show();
-
-            //add event listener for form submit to call updateTodo(id)
-            saveButton.addEventListener('click', function () { updateTodo(item._id) });
-                /* e.preventDefault();
-
-                console.log("SUBMIT EDIT");
-                //see if input values are different --> if so, PUT new values in
-                if((prevTitle === formTitle.value) && (prevDescription = formDescription.value) && (prevPrice === formPrice.value) && (prevImage === formImage.value)) {
-                    console.log(`No changes made to id ${item._id}: values are the same.`);
-                    form.reset();
-                    
-                    return;
-                } else {
-                    console.log(`**UPDATING ${item._id} **`);
-                    updateTodo(item._id);
-                    //form.removeEventListener('submit', updateTodo);
-                } */
+            showEdit();
         })
 
         cardCheckbox.addEventListener('click', () => {
@@ -197,32 +205,33 @@ const getTodo = () => {
 const createTodo = () => {
     const newTodo = {};
 
-    newTodo.title = formTitle.value;
-    newTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
-    newTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
-    newTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
+    newTodo.title = formTitle2.value;
+    newTodo.description = (formDescription2.value === '') ? "No description." : formDescription2.value;
+    newTodo.imgUrl = (formImage2.value === '') ? defaultImage : formImage2.value;
+    newTodo.price = (formPrice2.value === '') ? 0 : parseInt(formPrice2.value);
 
     axios.post("https://api.vschool.io/michaelhardin/todo", newTodo)
         .then(res => {
             console.log("POSTED");
-            form.reset();
+            formAdd.reset();
             getTodo();
         })
         .catch(err => console.log(err))
 } //axios.post()
 
 // PART 3 - PUT data
-const updateTodo = (id) => {
+const updateTodo = () => {
     const updatedTodo = {};
 
+    let item_id = formItemID.value; console.log(item_id, '\n\n');
     updatedTodo.title = formTitle.value;
     updatedTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
     updatedTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
     updatedTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
 
-    axios.put(`https://api.vschool.io/michaelhardin/todo/${id}`, updatedTodo)
+    axios.put(`https://api.vschool.io/michaelhardin/todo/${item_id}`, updatedTodo)
         .then(res => {
-            console.log("UPDATED");
+            console.log(`UPDATED: ${item_id}`);
             form.reset();
 
             getTodo();
@@ -258,25 +267,31 @@ const updateCompleted = (id, bool) => {
 }
 
 addITEM.addEventListener('click', () => {
-    show();
-    saveButton.removeEventListener('click', updateTodo);
-    saveButton.addEventListener('click', createTodo);
+    showAdd();
 })
 
 exit.addEventListener('click', () => {
     hide();
 });
 
+exitAdd.addEventListener('click', () => {
+    hide();
+})
+
 //hitting cancel button clears form and hides overlay
 cancelButton.addEventListener('click', () => {
-    formTitle.value = '';
-    formDescription.value = '';
-    formPrice.value = '';
-    formImage.value = '';
-
     form.reset();
 
     hide();
 })
+
+cancelButton2.addEventListener('click', () => {
+    formAdd.reset();
+
+    hide();
+})
+
+form.addEventListener('submit', updateTodo);
+formAdd.addEventListener('submit', createTodo);
 
 getTodo();
