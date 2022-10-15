@@ -1,5 +1,7 @@
 //const { default: axios } = require("axios");
 
+let createTrue = true;
+
 const cardContainer = document.getElementById("container");
 
 //hold previous form element values for PUT
@@ -70,6 +72,7 @@ const render = (data) => {
         const cardTitleH2 = document.createElement("h2");
         cardTitleH2.setAttribute("id", "cardTitle");
         cardTitleH2.textContent = item.title;
+        (item.completed) ? (cardTitleH2.style.textDecoration = "line-through") : (cardTitleH2.style.textDecoration = "none");
 
         //create p element, add 'cardDescription' id and add data description
         const cardDescP = document.createElement("p");
@@ -86,6 +89,10 @@ const render = (data) => {
         cardCheckbox.setAttribute("type", "checkbox");
         cardCheckbox.classList.add('my_checkbox');
         cardCheckbox.setAttribute("name", "completed");
+        console.log(`item completed: ${item.completed}`);
+        if (item.completed) {
+            cardCheckbox.checked = true;
+        } else { cardCheckbox.checked = false; }
 
         /// create label for input checkbox
         const labelForCheckbox = document.createElement("label");
@@ -127,6 +134,8 @@ const render = (data) => {
         editButton.addEventListener('click', () => {
             console.log(`EDIT: ${item._id}`);
 
+            saveButton.removeEventListener('click', createTodo);
+
             //populate form input textboxes with data
             formTitle.value = item.title; prevTitle = item.title;
             formDescription.value = item.description; prevDescription = item.description;
@@ -137,7 +146,9 @@ const render = (data) => {
             show();
 
             //add event listener for form submit to call updateTodo(id)
-            form.addEventListener('submit', (e) => {
+            saveButton.addEventListener('click', function () { updateTodo(item._id) });
+                /* e.preventDefault();
+
                 console.log("SUBMIT EDIT");
                 //see if input values are different --> if so, PUT new values in
                 if((prevTitle === formTitle.value) && (prevDescription = formDescription.value) && (prevPrice === formPrice.value) && (prevImage === formImage.value)) {
@@ -149,12 +160,11 @@ const render = (data) => {
                     console.log(`**UPDATING ${item._id} **`);
                     updateTodo(item._id);
                     //form.removeEventListener('submit', updateTodo);
-                }
-            })
+                } */
         })
 
         cardCheckbox.addEventListener('click', () => {
-            (cardCheckbox.checked) ? (cardTitleH2.style.textDecoration = "line-through") : (cardTitleH2.style.textDecoration = "none");
+            (cardCheckbox.checked) ? (cardTitleH2.style.textDecoration = "line-through", updateCompleted(item._id, true)) : (cardTitleH2.style.textDecoration = "none", updateCompleted(item._id, false));
         })
 
         cardTextDiv.append(cardTitleH2)
@@ -185,24 +195,20 @@ const getTodo = () => {
 
 // PART 2 - POST data
 const createTodo = () => {
-    show();
+    const newTodo = {};
 
-    saveButton.addEventListener('click', () => {
-        const newTodo = {};
+    newTodo.title = formTitle.value;
+    newTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
+    newTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
+    newTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
 
-        newTodo.title = formTitle.value;
-        newTodo.description = (formDescription.value === '') ? "No description." : formDescription.value;
-        newTodo.imgUrl = (formImage.value === '') ? defaultImage : formImage.value;
-        newTodo.price = (formPrice.value === '') ? 0 : parseInt(formPrice.value);
-    
-        axios.post("https://api.vschool.io/michaelhardin/todo", newTodo)
-            .then(res => {
-                console.log("POSTED");
-                form.reset();
-                getTodo();
-            })
-            .catch(err => console.log(err))
-    })
+    axios.post("https://api.vschool.io/michaelhardin/todo", newTodo)
+        .then(res => {
+            console.log("POSTED");
+            form.reset();
+            getTodo();
+        })
+        .catch(err => console.log(err))
 } //axios.post()
 
 // PART 3 - PUT data
@@ -218,6 +224,7 @@ const updateTodo = (id) => {
         .then(res => {
             console.log("UPDATED");
             form.reset();
+
             getTodo();
         })
         .catch(err => console.log(err))
@@ -239,7 +246,22 @@ const deleteTodo = (id) => {
     (completedCheckbox.checked) ? (cardTitle.style.textDecoration = "line-through") : (cardTitle.style.textDecoration = "none");
 }) */
 
-addITEM.addEventListener('click', createTodo);
+/* checkbox PUT function */
+const updateCompleted = (id, bool) => {
+    const checkedTodo = {};
+
+    checkedTodo.completed = (bool) ? true : false;
+
+    axios.put(`https://api.vschool.io/michaelhardin/todo/${id}`, checkedTodo)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+}
+
+addITEM.addEventListener('click', () => {
+    show();
+    saveButton.removeEventListener('click', updateTodo);
+    saveButton.addEventListener('click', createTodo);
+})
 
 exit.addEventListener('click', () => {
     hide();
