@@ -64,7 +64,9 @@ label {
 
 #container {
     display: grid;
+    margin-top: 10px;
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    grid-row-gap: 20px;
     grid-column-gap: 20px;
     justify-content: center;
     align-items: center;
