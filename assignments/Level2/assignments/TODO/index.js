@@ -1,5 +1,3 @@
-let createTrue = true;
-
 const cardContainer = document.getElementById("container");
 
 //hold previous form element values for PUT
@@ -12,8 +10,10 @@ let prevImage;
 const overlayDIV = document.getElementById("overlay");
 const addITEM = document.getElementById("ul_addITEM");
 const overlayFormDIV = document.getElementById("overlay_form");
+
 const exit = document.querySelector('.overlay_exit');
 const exitAdd = document.querySelector('.overlay_exit2');
+
 const cancelButton = document.getElementById("cancelButton");
 const cancelButton2 = document.getElementById("cancelButton2");
 const saveButton = document.querySelector('.save');
@@ -41,6 +41,7 @@ const formPrice2 = formAdd.form_price2;
 const formImage = form.form_image;
 const formImage2 = formAdd.form_image2;
 
+// hidden input to hold _id
 const formItemID = form.itemID;
 
 /* /* card elements 
@@ -197,12 +198,14 @@ const getTodo = () => {
     hide();
 
     axios.get("https://api.vschool.io/michaelhardin/todo")
-        .then(res => render(res.data))
+        .then(res => render(res.data)) //call render() to display data on DOM
         .catch(err => console.log(err))
 }
 
 // PART 2 - POST data
-const createTodo = () => {
+const createTodo = (e) => { //axios.post()
+    e.preventDefault();
+
     const newTodo = {};
 
     newTodo.title = formTitle2.value;
@@ -212,15 +215,18 @@ const createTodo = () => {
 
     axios.post("https://api.vschool.io/michaelhardin/todo", newTodo)
         .then(res => {
+            console.assert(res);
             console.log("POSTED");
             formAdd.reset();
             getTodo();
         })
         .catch(err => console.log(err))
-} //axios.post()
+}
 
 // PART 3 - PUT data
-const updateTodo = () => {
+const updateTodo = (e) => { //axios.put()
+    e.preventDefault();
+
     const updatedTodo = {};
 
     let item_id = formItemID.value; console.log(item_id, '\n\n');
@@ -237,7 +243,7 @@ const updateTodo = () => {
             getTodo();
         })
         .catch(err => console.log(err))
-} //axios.put()
+}
 
 // PART 4 - DELETE data
 const deleteTodo = (id) => {
@@ -251,10 +257,6 @@ const deleteTodo = (id) => {
 
 /* DOM interaction */
 
-/* completedCheckbox.addEventListener('click', () => {
-    (completedCheckbox.checked) ? (cardTitle.style.textDecoration = "line-through") : (cardTitle.style.textDecoration = "none");
-}) */
-
 /* checkbox PUT function */
 const updateCompleted = (id, bool) => {
     const checkedTodo = {};
@@ -266,32 +268,28 @@ const updateCompleted = (id, bool) => {
         .catch(err => console.log(err))
 }
 
-addITEM.addEventListener('click', () => {
-    showAdd();
-})
+// + add Item opens add form
+addITEM.addEventListener('click', showAdd);
 
-exit.addEventListener('click', () => {
-    hide();
-});
-
-exitAdd.addEventListener('click', () => {
-    hide();
-})
+// close overlays for add form and edit form
+exit.addEventListener('click', hide);
+exitAdd.addEventListener('click', hide);
 
 //hitting cancel button clears form and hides overlay
 cancelButton.addEventListener('click', () => {
     form.reset();
 
     hide();
-})
+});
 
 cancelButton2.addEventListener('click', () => {
     formAdd.reset();
 
     hide();
-})
+});
 
 form.addEventListener('submit', updateTodo);
+
 formAdd.addEventListener('submit', createTodo);
 
 getTodo();

@@ -296,3 +296,8 @@ ul:hover li, ul:hover .icon-plus:before {
     content: "\ea0d";
     font-size: 1.3em;
 }
+
+.icon-checkmark:before {
+    content: "\ea10";
+    font-size: 1.3em;
+}
