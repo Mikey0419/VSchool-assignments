@@ -24,6 +24,7 @@ const overlayFormDIVadd = document.getElementById("overlay_form2");
 
 /* default image */
 const defaultImage = "https://i0.wp.com/shahpourpouyan.com/wp-content/uploads/2018/10/orionthemes-placeholder-image-1.png?w=1738&ssl=1";
+// dallas image: https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/04/0b/60/reunion-tower.jpg?w=2000&h=-1&s=1
 
 /* form elements */
 const form = document.todo_add_edit;
