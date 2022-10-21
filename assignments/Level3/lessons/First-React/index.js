@@ -1,4 +1,8 @@
-import React from "react"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 // declarative
 /* function Navbar() {
@@ -28,7 +32,9 @@ const page = (
     </div>
 )
 
-ReactDOM.render(page, document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(page);
 
 /* // imperative (step by step instruction)
 const root = document.getElementById("root");
