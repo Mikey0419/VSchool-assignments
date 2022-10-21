@@ -32,9 +32,11 @@ const page = (
     </div>
 )
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+/* const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(page);
+root.render(page); */
+
+ReactDOM.render(page, document.getElementById("root"));
 
 /* // imperative (step by step instruction)
 const root = document.getElementById("root");

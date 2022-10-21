@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -26,6 +26,50 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+body {
+  color: #fff;
+}
+
+p.logo-text {
+  color: #61DAFB;
+  font-weight: 800;
+  vertical-align: center;
+  padding-left: 15px;
+}
+
+ul {
+  display: grid;
+  list-style-image: url('./bullet.png');
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.reactLogo {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reactLogo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 @keyframes App-logo-spin {
