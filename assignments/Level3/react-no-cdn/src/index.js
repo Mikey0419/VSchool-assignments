@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import reactLogo from './react-logo.webp';
+import watermark from './reactjs-icon 2.png';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
 
@@ -11,7 +13,7 @@ root.render(
   </React.StrictMode>
 ); */
 
-function Nav() {
+/* function Nav() {
   return(
     <div className="navbar">
       <a
@@ -31,12 +33,34 @@ function Msg() {
       <p>This is a paragraph</p>
     </div>
   )
+} */
+
+function Header() {
+  return (
+    <div className="header-nav">
+      <img src={reactLogo} className="reactLogo" onClick={() => alert('clicked!')} alt="logo" />
+      <p className="logo-text">ReactFacts</p>
+      <p className="subtitle">React Course - Project 1</p>
+    </div>
+  )
+}
+
+function Watermark() {
+  return (
+    <div className="watermark">
+      <img src={watermark} alt="watermark" />
+    </div>
+  )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <App />
+  <>
+    <Header />
+    <Watermark />
+    <App />
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

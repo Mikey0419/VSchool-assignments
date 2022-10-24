@@ -3,6 +3,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Inter", "system-ui";
     background-color: #282D35;
+  padding: 0;
+  margin: 0;
 }
 
 code {
@@ -16,6 +18,29 @@ code {
   left: 50%;
   top: 25%;
   transform: translate(-50%, 0);
+}
+
+.subtitle {
+  width: 259px;
+  height: 21px;
+  margin-left: auto;
+  margin-right: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+
+  color: #DEEBF8;
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 92%;
+  transform: translate(0, -50%);
+  margin-left: auto;
 }
 
 .newH1 {

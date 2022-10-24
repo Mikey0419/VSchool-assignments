@@ -51,13 +51,25 @@ p.logo-text {
 ul {
   display: grid;
   list-style-image: url('./bullet.png');
+  margin: 0 0 0 20px;
+}
+
+li {
+  padding-left: 10px;
 }
 
 .header-nav {
   display: flex;
+  padding: 10px;
+  margin: 0;
+  position: relative;
+  top: 0;
+  left: 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  background-color: #21222A;
+  width: 100vw;
 }
 
 .reactLogo {
@@ -70,6 +82,10 @@ ul {
   .reactLogo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+h1 {
+  padding-left: 20px;
 }
 
 @keyframes App-logo-spin {

@@ -1,4 +1,3 @@
-import reactLogo from './react-logo.webp'
 import './App.css';
 import "inter-ui/inter.css";
 
@@ -23,12 +22,11 @@ import "inter-ui/inter.css";
   );
 } */
 
+
+
 function App() {
   return(
       <div>
-          <div className="header-nav">
-            <img src={reactLogo} className="reactLogo" onClick={() => alert('clicked!')} alt="logo" /><p className="logo-text">ReactFacts</p>
-          </div>
           <h1>Fun facts about React</h1>
           <ul>
               <li>Was first released in 2013</li>
