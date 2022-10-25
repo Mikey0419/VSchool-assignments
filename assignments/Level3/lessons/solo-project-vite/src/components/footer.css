@@ -1,0 +1,68 @@
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #161619;
+    width: 100%;
+    height: 64px;
+    border-radius: 0 0 10px 10px;
+}
+
+ul.icons {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: auto 45px auto auto;
+    justify-content: center;
+}
+
+ul.icons > li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 25px 10px 0;
+    padding: 0;
+    width: 25px; height: 25px;
+    background-color: #918E9B;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.icon-facebook:before {
+    content: "\e905";
+    font-size: 1.4rem;
+    color: #161619;
+}
+
+.facebook {
+    margin-top: 5px;
+}
+
+.icon-github:before {
+    content: "\eab0";
+    font-size: 1.2rem;
+    color: #161619;
+}
+
+.github {
+    margin-top: 3px;
+}
+
+.icon-instagram:before {
+    content: "\ea92";
+    font-size: 1.1rem;
+    color: #161619;
+}
+
+.instagram {
+    margin-top: 4px;
+}
+
+.icon-twitter:before {
+    content: "\e906";
+    font-size: 1.1rem;
+    color: #161619;
+}
+
+.twitter {
+    margin-top: 4px;
+}
