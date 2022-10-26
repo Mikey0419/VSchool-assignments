@@ -7,6 +7,7 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <h1>Grid goes here</h1>
     </div>
   )
 }
