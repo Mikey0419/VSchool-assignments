@@ -1,0 +1,24 @@
+.hero-container {
+    align-items: center;
+    position: relative;
+    margin: 140px 0 0 40px;
+}
+
+.hero-image {
+    max-width: 395.91px;
+    max-height: 232px;
+}
+
+.heading {
+    text-align: left;
+    size: 36px;
+    font-weight: 600;
+    margin: 32px 0 10px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+p.content {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 17.6px;
+}
