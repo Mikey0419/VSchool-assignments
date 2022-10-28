@@ -12,9 +12,9 @@ function App() {
         imgUrl="./src/assets/swimmer.png"
         status="SOLD OUT"
         rating="5.0"
-        reviews="6"
+        reviews={6}
         title="Life lessons with Katie Zaferes"
-        price="136"
+        price={136}
         country="USA"
       />
     </div>
