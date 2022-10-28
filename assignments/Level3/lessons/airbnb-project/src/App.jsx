@@ -13,6 +13,16 @@ const gridData = [
     title: "Life lessons with Katie Zaferes",
     price: 136,
     country: "USA"
+  },
+  {
+    id: 2,
+    imgUrl: "./src/assets/swimmer.png",
+    available: "SOLD OUT",
+    rating: "5.0",
+    reviews: 6,
+    title: "Life lessons with Katie Zaferes",
+    price: 136,
+    country: "USA"
   }
 ]
 
@@ -35,12 +45,14 @@ function App() {
       <Card key={item.id} imgUrl={item.imgUrl} available={item.available} rating={item.rating} reviews={item.reviews} title={item.title} price={item.price} country={item.country} />
     )
   })
-  
+
   return (
     <div>
       <Navbar />
       <Hero />
-      {cardElement}
+      <div className="card-grid">
+        {cardElement}
+      </div>
     </div>
   )
 }
