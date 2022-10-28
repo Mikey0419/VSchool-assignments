@@ -5,7 +5,7 @@ function Card(props) {
     return(
         <div className="card-container">
             <div className="image-container">
-                <img className="card-image" src={props.coverImg}></img>
+                <img className="card-image" alt={props.description} src={props.coverImg}></img>
                 <p className="image-tag">{props.available}</p>
             </div>
             <div className="star-rating-container">

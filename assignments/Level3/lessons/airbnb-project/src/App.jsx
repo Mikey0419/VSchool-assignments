@@ -30,7 +30,7 @@ function App() {
     let spots = available();
     
     return (
-      <Card key={item.id} coverImg={item.coverImg} available={spots} rating={item.stats.rating} reviewCount={item.stats.reviewCount} title={item.title} price={item.price} location={item.location} />
+      <Card key={item.id} description={item.description} coverImg={item.coverImg} available={spots} rating={item.stats.rating} reviewCount={item.stats.reviewCount} title={item.title} price={item.price} location={item.location} />
     )
   })
 
