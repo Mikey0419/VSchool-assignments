@@ -63,7 +63,7 @@ p.image-tag {
 .description {
     color: #222222;
     margin: -5px 0 0 1px;
-    width: 175px;
+    width: 100%;
 }
 
 .pricing {
