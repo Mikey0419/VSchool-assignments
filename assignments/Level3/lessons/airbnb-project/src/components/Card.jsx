@@ -6,7 +6,7 @@ function Card(props) {
         <div className="card-container">
             <div className="image-container">
                 <img className="card-image" src={props.imgUrl}></img>
-                <p className="image-tag">{props.status}</p>
+                <p className="image-tag">{props.available}</p>
             </div>
             <div className="star-rating-container">
                 <img className="star" src={star}></img>
