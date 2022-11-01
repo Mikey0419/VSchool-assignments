@@ -1,0 +1,14 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-list {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-list > li {
+    padding: 0 20px;
+}
