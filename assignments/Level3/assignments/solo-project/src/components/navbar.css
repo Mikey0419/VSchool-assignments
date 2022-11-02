@@ -1,0 +1,28 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    background-color: #F55A5A;
+    height: 55px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.nav-title {
+    font-family: "Inter", "system-ui";
+    font-weight: 500;
+    font-size: 14.46px;
+    color: #FFFFFF;
+    line-height: 17.5px;
+}
+
+.icon-world:before {
+    content: "\e909";
+    font-size: 2rem;
+    color: #FFFFFF;
+}

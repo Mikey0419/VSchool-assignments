@@ -1,5 +1,6 @@
 import './App.css'
 import BlogCard from './components/BlogCard'
+import Navbar from './components/Navbar'
 import data from './data'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <div className="container">
+      <Navbar />
       {blogElement}
     </div>
   )

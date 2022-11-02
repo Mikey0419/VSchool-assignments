@@ -3,5 +3,8 @@
   flex-direction: column;
   position: absolute;
   left: 50%; top: 0;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 10%);
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 70px 20px 20px 20px;
 }
