@@ -1,18 +1,14 @@
 import './App.css'
+import BlogCard from './components/BlogCard'
 import data from './data'
 
-// map through data
-function blogData() {
-  data.map((item, index) => {
+function App() {
+
+  const blogElement = data.map((item, index) => {
     return(
       <BlogCard key={index} item={item} />
     )
   })
-}
-
-function App() {
-
-  const blogElement = blogData();
 
   return (
     <div className="container">

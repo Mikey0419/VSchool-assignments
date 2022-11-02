@@ -6,8 +6,15 @@
 .card-container {
     width: 470px;
     height: 168px;
-    border: 1px solid #F5F5F5;
-    border: 0 0 1px 0;
+    border-bottom: 1px solid #F5F5F5;
+    margin: 0 0 10px 0;
+    padding: 18px 10px;
+}
+
+.card-content-location {
+    align-items: center;
+    margin-left: -3px;
+    margin-bottom: 5px;
 }
 
 img {
@@ -15,16 +22,18 @@ img {
     background-size: cover;
     width: 125px;
     height: 168px;
-    background-position: center;
 }
 
 .card-content-container {
     display: flex;
     flex-direction: column;
+    padding: 10px 0 0 19px;
 }
 
 .location-title {
     font-size: 25px;
+    margin-top: -10px;
+    margin-bottom: 30px;
 }
 
 .location, .location-url, .location-description, .location-dates, .location-title {
@@ -40,15 +49,36 @@ img {
     font-weight: 400;
 }
 
+.location-dates, .location-title {
+    font-weight: 700;
+}
+
+.location {
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+}
+
 .location-url {
     color: #918E9B;
 }
 
-.location-dates, .location-title {
-    font-weight: 700;
+.location-dates {
+    margin-top: -15px;
+    padding-bottom: 10px;
+}
+
+.location-description {
+    margin-top: -13px;
+    line-height: 15.36px;
 }
 
 .icon-location:before {
     content: "\e947";
     color: #F55A5A;
+    font-size: 0.6rem;
+}
+
+.location--icon {
+    margin-top: -7px;
+    padding-right: 2px;
 }
