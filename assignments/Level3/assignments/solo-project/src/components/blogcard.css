@@ -1,0 +1,54 @@
+.card-container, .card-content-location {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-container {
+    width: 470px;
+    height: 168px;
+    border: 1px solid #F5F5F5;
+    border: 0 0 1px 0;
+}
+
+img {
+    border-radius: 5px;
+    background-size: cover;
+    width: 125px;
+    height: 168px;
+    background-position: center;
+}
+
+.card-content-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-title {
+    font-size: 25px;
+}
+
+.location, .location-url, .location-description, .location-dates, .location-title {
+    font-family: "Inter", "system-ui";
+    color: #2B283A;
+}
+
+.location, .location-url, .location-description, .location-dates {
+    font-size: 10.24px;
+}
+
+.location, .location-url, .location-description {
+    font-weight: 400;
+}
+
+.location-url {
+    color: #918E9B;
+}
+
+.location-dates, .location-title {
+    font-weight: 700;
+}
+
+.icon-location:before {
+    content: "\e947";
+    color: #F55A5A;
+}
