@@ -24,6 +24,10 @@ body {
     color: #FFFFFF;
 }
 
+.nav-link:hover {
+    color: #ffffffa3;
+}
+
 .nav-list {
     display: flex;
     flex-direction: row;
@@ -39,4 +43,9 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     margin-top: 20px;
+}
+
+li:hover {
+    color: #ffffffa3;
+    cursor: pointer;
 }
