@@ -1,5 +1,6 @@
 import './header.css'
 import Navbar from './Navbar'
+import "@fontsource/open-sans";
 
 function Header() {
     return(
