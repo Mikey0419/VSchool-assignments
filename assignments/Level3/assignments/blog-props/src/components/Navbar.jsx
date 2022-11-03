@@ -3,7 +3,7 @@ import './navbar.css'
 function Navbar() {
     return(
         <div className="nav-container">
-            <a href="#">Start Bootstrap</a>
+            <a className="nav-link" href="#">Start Bootstrap</a>
             <ul className="nav-list">
                 <li>home</li>
                 <li>about</li>
@@ -14,4 +14,4 @@ function Navbar() {
     )
 }
 
-export default Navbar;
+export default Navbar
