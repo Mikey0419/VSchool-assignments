@@ -22,13 +22,26 @@
     transform: translate(-50%);
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
-    margin: 0 0 8px 0;
+    margin: -10px 0 8px 0;
+}
+
+.hero-subtext {
+    position: absolute;
+    left: 50%; top: 40%;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    z-index: 3;
+    transform: translate(-50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 100px 0 8px 0;
 }
 
 .overlay {
     position: absolute;
     top: 0; left: 0;
     width: 100vw; height: 61vh;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: #15151580;
     z-index: 2;
 }
