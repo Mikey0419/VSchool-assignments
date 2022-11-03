@@ -7,7 +7,9 @@ function Header() {
             <div className="overlay">
                 <Navbar />
             </div>
-            <div className="header"></div>
+            <div className="header">
+                <h1 className="hero-text">Clean Blog</h1>
+            </div>
         </>
     )
 }
