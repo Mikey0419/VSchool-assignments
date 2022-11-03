@@ -1,10 +1,11 @@
 .list-container {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    margin: 80px 0 0 0;
+    width: 700px;
     left: 50%;
+    position: relative;
     transform: translate(-50%);
-    margin-top: 80px;
 }
 
 .older-post-link {
@@ -27,7 +28,7 @@
     font-size: 0.875rem;
     border-radius: 0;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    width: 150px;
+    width: 120px;
     text-transform: uppercase;
     margin-left: auto;
 }
