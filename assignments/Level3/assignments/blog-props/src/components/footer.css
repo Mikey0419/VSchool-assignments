@@ -1,7 +1,7 @@
 .footer {
     display: flex;
     flex-direction: row;
-    padding: 75px 50px;
+    padding: 75px 0px;
     justify-content: center;
     border-top: 1px solid #dee2e6;
     margin-top: 25px;
@@ -33,6 +33,11 @@
     background-color: black;
     font-size: 1.5em;
     line-height: 0.5em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.icon:hover {
+    background-color: #0085A1;
 }
 
 .icon-github:before {
@@ -43,11 +48,17 @@
 .icon-twitter:before {
     content: "\e906";
     color: #FFFFFF;
-    background-color: black;
 }
 
 .icon-facebook:before {
     content: "\e905";
     color: #FFFFFF;
-    background-color: black;
+}
+
+.copyright {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    color: #6C757D;
+    margin-top: 20px;
 }
