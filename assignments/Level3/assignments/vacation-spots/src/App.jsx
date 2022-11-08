@@ -11,7 +11,9 @@ function App() {
   })
 
   return (
-    {cardElement}
+    <div className="container">
+      {cardElement}
+    </div>
   )
 }
 
