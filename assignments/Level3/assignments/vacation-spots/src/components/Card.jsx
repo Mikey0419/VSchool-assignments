@@ -6,6 +6,14 @@ props.item.place
 props.item.price
 props.item.timeToGo
 
+function getPrice() {
+    return(
+        <div>
+        <span className="icon-dollar"></span>
+    </div>
+    )
+}
+
 <div class="a-box">
   <div class="img-container">
     <div class="img-inner">
@@ -16,14 +24,37 @@ props.item.timeToGo
   </div>
   <div class="text-container">
     <h3>A blue bird</h3>
-    <div>
-      This a demo experiment to skew image container. It looks good.
-  </div>
+    {price}
 </div>
 
 */
 
 function Card(props) {
+
+    function getPrice() {
+        if (props.item.price < 500) {
+            return(
+                <div>
+                    <span className="icon-dollar"></span>
+                </div>
+            )
+        } else if ((props.item.price > 500) && (props.item.price < 1000)) {
+            return(
+                <div>
+                    <span className="icon-dollar"></span><span className="icon-dollar"></span>
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    <span className="icon-dollar"></span><span className="icon-dollar"></span><span className="icon-dollar"></span>
+                </div>
+            )
+        }
+    }
+
+    const price = getPrice();
+
     return(
             <div className="a-box">
                 <div className="img-container">
@@ -33,13 +64,10 @@ function Card(props) {
                         </div>
                     </div>
                 </div>
-            <div className="text-container">
-                <h3>{props.item.place}</h3>
-                <div>
-                    Price: <span className="icon-dollar"></span><span className="icon-dollar"></span>
-                    Time to go: {props.item.timeToGo}
+                <div className="text-container">
+                    <h3>{props.item.place}</h3>
+                    {price}
                 </div>
-            </div>
             </div>
     )
 }
