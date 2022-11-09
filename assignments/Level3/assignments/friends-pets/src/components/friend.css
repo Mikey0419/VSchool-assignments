@@ -1,0 +1,10 @@
+.friend-card {
+    background-color: #FFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 15rem;
+    height: 22rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}

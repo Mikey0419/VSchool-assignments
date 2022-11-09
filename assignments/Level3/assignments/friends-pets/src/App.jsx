@@ -3,7 +3,9 @@ import FriendList from './components/FriendList'
 
 function App() {
   return (
-    <FriendList />
+    <div className="container">
+      <FriendList />
+    </div>
   )
 }
 
