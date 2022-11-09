@@ -1,8 +1,15 @@
 import './pet.css'
 
+/*
+
+props.item.pets.name
+props.item.pets.breed
+
+*/
+
 function Pet(props) {
     return(
-        <p>Pet component</p>
+        <p>{props.item.pets.name} - {props.item.pets.breed}</p>
     )
 }
 

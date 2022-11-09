@@ -2,6 +2,17 @@ import Pet from '../components/Pet'
 import data from '../data'
 import './friend.css'
 
+/*
+
+item.name
+item.age
+
+item.pets.name
+item.pets.breed
+
+*/
+
+
 function Friend(props) {
 
     const petInfo = data.map((index, item) => {
@@ -12,7 +23,7 @@ function Friend(props) {
 
     return(
         <div className="friend-card">
-            <p>Friend and Pet info</p>
+            <p>{props.item.name}</p>
             <div className="pet-section">
                 {petInfo}
             </div>
