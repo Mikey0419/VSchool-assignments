@@ -1,4 +1,5 @@
-export default [
+export default
+[
     {
       name: "Ben",
       age: 29,
@@ -6,10 +7,12 @@ export default [
         {
           name: "spot",
           breed: "tabby"
-        },{
+        },
+        {
           name: "John Johnson",
           breed: "husky"
-        },{
+        },
+        {
           name: "Bear the bear",
           breed: "Grizzly"
         }
@@ -45,13 +48,16 @@ export default [
         {
           name: "fluffy",
           breed: "sphynx cat"
-        },{
+        },
+        {
           name: "patches",
           breed: "sphynx cat"
-        },{
+        },
+        {
           name: "tiger",
           breed: "sphynx cat"
-        },{
+        },
+        {
           name: "oscar",
           breed: "sphynx cat"
         }

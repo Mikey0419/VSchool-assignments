@@ -9,7 +9,7 @@ props.item.pets.breed
 
 function Pet(props) {
     return(
-        <p>{props.item.pets.name} - {props.item.pets.breed}</p>
+        <p>{props.item.name}, {props.item.breed}</p>
     )
 }
 

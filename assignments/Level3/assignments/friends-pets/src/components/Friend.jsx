@@ -1,5 +1,4 @@
 import Pet from '../components/Pet'
-import data from '../data'
 import './friend.css'
 
 /*
@@ -15,7 +14,7 @@ item.pets.breed
 
 function Friend(props) {
 
-    const petInfo = data.map((index, item) => {
+    const petInfo = props.pet.map((item, index) => {
         return(
             <Pet key={index} item={item} />
         )
@@ -23,10 +22,11 @@ function Friend(props) {
 
     return(
         <div className="friend-card">
-            <p>{props.item.name}</p>
+            <p>{props.item.name} ({props.item.age})</p>
             <div className="pet-section">
                 {petInfo}
             </div>
+            <hr />
         </div>
     )
 }

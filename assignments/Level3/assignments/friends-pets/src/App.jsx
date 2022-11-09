@@ -1,8 +1,9 @@
 import './App.css'
+import FriendList from './components/FriendList'
 
 function App() {
   return (
-    <p>Stuff goes here</p>
+    <FriendList />
   )
 }
 
