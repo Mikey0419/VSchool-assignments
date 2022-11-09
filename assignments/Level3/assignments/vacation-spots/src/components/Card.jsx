@@ -53,7 +53,42 @@ function Card(props) {
         }
     }
 
-    const price = getPrice();
+    function getCardColor() {
+
+        const price = getPrice();
+        
+        if (props.item.timeToGo === 'Winter') {
+            return(
+                <div className="text-container winter">
+                    <h3>{props.item.place}</h3>
+                    {price}
+                </div>
+            )
+        } else if (props.item.timeToGo === 'Spring') {
+            return(
+                <div className="text-container spring">
+                    <h3>{props.item.place}</h3>
+                    {price}
+                </div>
+            )
+        } else if (props.item.timeToGo === 'Summer') {
+            return(
+                <div className="text-container summer">
+                    <h3>{props.item.place}</h3>
+                    {price}
+                </div>
+            )
+        } else {
+            return(
+                <div className="text-container fall">
+                    <h3>{props.item.place}</h3>
+                    {price}
+                </div>
+            )
+        }
+    }
+
+    const cardSeason = getCardColor();
 
     return(
             <div className="a-box">
@@ -64,10 +99,7 @@ function Card(props) {
                         </div>
                     </div>
                 </div>
-                <div className="text-container">
-                    <h3>{props.item.place}</h3>
-                    {price}
-                </div>
+                {cardSeason}
             </div>
     )
 }
