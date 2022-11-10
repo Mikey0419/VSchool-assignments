@@ -24,7 +24,7 @@ function Friend(props) {
         <div className="container">
             <div className="friend-card">
                 <img className="pic" src={props.item.imgUrl} />
-                <h1>{props.item.name} ({props.item.age})</h1>
+                <h1>{props.item.name} <span className="age">({props.item.age})</span></h1>
                 <div className="pet-section">
                     {petInfo}
                 </div>
