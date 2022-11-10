@@ -37,7 +37,7 @@ export default
     {
       name: "Marcus",
       age: 25,
-      imgUrl: '',
+      imgUrl: 'https://images.unsplash.com/photo-1485528562718-2ae1c8419ae2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1458&q=80',
       pets: [
         {
           name: "Indy",
@@ -53,7 +53,7 @@ export default
     {
       name: "Jacob",
       age: 20,
-      imgUrl: '',
+      imgUrl: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80',
       pets: [
         {
           name: "fluffy",
