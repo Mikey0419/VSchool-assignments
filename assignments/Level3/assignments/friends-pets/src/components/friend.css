@@ -1,10 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
+
 .friend-card {
-    background-color: #FFF;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    width: 15rem;
-    height: 22rem;
+    width: 17rem;
+    height: 8rem;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 70% 30% 64% 36% / 26% 72% 28% 74% ;
+}
+
+h1 {
+    position: relative;
+    top: -100px;
+    left: 100px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img.pic {
+    position: relative;
+    left: -44px;
+    top: -18px;
+    width: 100%;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 70% 30% 74% 36% / 46% 70% 38% 74%;
+}
+
+.pet-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    top: 60px;
+    margin-left: 15px;
 }

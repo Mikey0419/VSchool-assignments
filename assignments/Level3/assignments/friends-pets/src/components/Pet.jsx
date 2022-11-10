@@ -8,8 +8,14 @@ props.item.pets.breed
 */
 
 function Pet(props) {
+
+    console.log(props.item.imgUrl)
+
     return(
-        <p>{props.item.name}, {props.item.breed}</p>
+        <div className="icon-container">
+            <img className="icon" src={props.item.imgUrl} />
+            <p>{props.item.name}</p>
+        </div>
     )
 }
 

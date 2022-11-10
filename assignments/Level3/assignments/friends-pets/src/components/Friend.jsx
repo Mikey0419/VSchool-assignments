@@ -21,12 +21,14 @@ function Friend(props) {
     })
 
     return(
-        <div className="friend-card">
-            <p>{props.item.name} ({props.item.age})</p>
-            <div className="pet-section">
-                {petInfo}
+        <div className="container">
+            <div className="friend-card">
+                <img className="pic" src={props.item.imgUrl} />
+                <h1>{props.item.name} ({props.item.age})</h1>
+                <div className="pet-section">
+                    {petInfo}
+                </div>
             </div>
-            <hr />
         </div>
     )
 }
