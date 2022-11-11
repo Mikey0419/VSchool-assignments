@@ -1,15 +1,23 @@
 import './form.css'
 
 function Form() {
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(myform.first.value, myform.second.value);
+        myform.first.value = ''; myform.second.value = '';
+        myform.first.focus();
+    }
+
     return(
-        <div className="container">
+        <form name="myform" onSubmit={handleSubmit} className="container">
             <div className="field-container">
-                <input type="text" />
-                <input type="text" />
+                <input name="first" type="text" />
+                <input name="second" type="text" />
             </div>
-            <button className="submit">Get a new meme image 🖼</button>
+            <button id="meme-button" className="submit">Get a new meme image 🖼</button>
             <img className="meme-image" src="" />
-        </div>
+        </form>
     )
 }
 
