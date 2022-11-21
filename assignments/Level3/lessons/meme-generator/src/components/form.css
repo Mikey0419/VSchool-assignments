@@ -14,6 +14,11 @@
     margin-top: 15px;
 }
 
+.submit:hover {
+    background: linear-gradient(90deg, #A626D3 1.18%, #672280 100%);
+    cursor: pointer;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -42,6 +47,6 @@ input[type=text] {
 
 .meme-image {
     width: 477px;
-    height: 268px;
+    height: 318px;
     margin: 36px 20px 55px 0;
 }
