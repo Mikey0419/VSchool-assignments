@@ -148,7 +148,7 @@ function App() {
       <div onClick={selectDice} className="dice-container">
         {diceComp}
       </div>
-          <button onClick={rollDice}>Roll 'em!</button>
+          <button onClick={rollDice}>{count % 3 === 0 ? "RESET!" : 'Roll!!'}</button>
     </div>
   )
 }

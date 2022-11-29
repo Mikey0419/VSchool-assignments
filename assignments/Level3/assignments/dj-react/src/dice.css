@@ -1,11 +1,12 @@
 .dice {
-    height: 40px; width: 39px;
     cursor: pointer;
 }
 
 #selected {
     border: 1px red solid;
-    border-radius: 15px;
+    height: 36px; width: 39px;
+    border-radius: 14px;
+    background-color: rgb(255, 0, 0);
 }
 
 #notselected {
