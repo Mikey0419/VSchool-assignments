@@ -96,10 +96,26 @@ function App() {
 
   function rollDice() {
     let tempCount = count;
-    ((tempCount - 1) % 3 === 0) ? resetDice() : '';
+    let newArr = [...dice];
 
-    console.log(dice.length)
+    ((tempCount > 0) && tempCount % 3 === 0) ? resetDice() : '';
     setCount(c => c + 1)
+
+    for(let i = 0; i < dice.length; i++) {
+      if(!newArr[i].selected) {
+        let random = Math.floor(Math.random() * 6);
+        newArr[i].value = random;
+      }
+    }
+    setDice(newArr);
+  }
+
+  function selectDice(e) {
+    let index = e.target.name;
+    let newArr = [...dice];
+
+    (newArr[index].id === 'selected') ? (newArr[index].selected = false, newArr[index].id = 'notselected') : (newArr[index].selected = true, newArr[index].id = 'selected');
+    setDice(newArr)
   }
 
   const colorComponents = colors.map((item, index) => {
@@ -129,7 +145,7 @@ function App() {
         <button name="3" onClick={bigTimeDJ}>Big Time 3</button>
         <button name="4" onClick={bigTimeDJ}>Big Time 4</button>
       </div>
-      <div className="dice-container">
+      <div onClick={selectDice} className="dice-container">
         {diceComp}
       </div>
           <button onClick={rollDice}>Roll 'em!</button>

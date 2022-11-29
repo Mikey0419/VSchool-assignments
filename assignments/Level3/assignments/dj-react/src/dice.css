@@ -2,3 +2,12 @@
     height: 40px; width: 39px;
     cursor: pointer;
 }
+
+#selected {
+    border: 1px red solid;
+    border-radius: 15px;
+}
+
+#notselected {
+    border: none;
+}
