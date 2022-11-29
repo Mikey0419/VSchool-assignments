@@ -22,6 +22,14 @@
   width: 50vw;
 }
 
+.dice-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 25px 0 10px 0;
+  width: 20vw;
+}
+
 button {
   display: inline-block;
   outline: 0;
