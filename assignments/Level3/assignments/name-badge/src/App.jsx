@@ -1,12 +1,111 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import Badge from './Badge'
 import './App.css'
 
+let el;
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    birthPlace: "",
+    phone: "",
+    favoriteFood: "",
+    about: ""
+  })
+
+  const [badge, setBadge] = useState([])
+
+function handleChange(e) {
+  const {name, value} = e.target;
+
+  setFormData(prev => (
+    {
+      ...prev,
+      [name]: value
+    }
+  ))
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const resetData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    birthPlace: "",
+    phone: "",
+    favoriteFood: "",
+    about: ""
+  }
+
+  const newBadge = [formData]
+  setBadge(prev => [...prev, newBadge])
+  
+  console.log(badge)
+
+  setFormData(resetData)
+  myform.reset()
+}
 
   return (
-    <p>App stuff goes here</p>
+    <div>
+      <form name="myform" className="container" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="First Name"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Place of birth"
+          name="birthPlace"
+          value={formData.birthPlace}
+          onChange={handleChange}
+        />
+        <input
+          type="tel"
+          placeholder="Phone (999999999)"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Favorite food"
+          name="favoriteFood"
+          value={formData.favoriteFood}
+          onChange={handleChange}
+        />
+        <textarea 
+          value={formData.about}
+          placeholder="Tell us about yourself ..."
+          onChange={handleChange}
+          name="about"
+        />
+        <button>Submit</button>
+      </form>
+      {el}
+    </div>
   )
 }
 
