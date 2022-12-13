@@ -15,7 +15,6 @@ function App() {
     phone: "",
     favoriteFood: "",
     about: "",
-    badgeColor: ""
   })
 
   const [badge, setBadge] = useState([
@@ -50,6 +49,17 @@ function validatePhone(num) {
   return (valid === null) ? false : true;
 }
 
+function whichButton() {
+  let button
+  for(const item in formData) {
+    button = `${formData[item]}` === "" ? (<button disabled>Submit</button>) : (<button>Submit</button>)
+  }
+
+  return button
+}
+
+const elButton = whichButton()
+
 function handleSubmit(e) {
   e.preventDefault();
 
@@ -61,7 +71,6 @@ function handleSubmit(e) {
     phone: "",
     favoriteFood: "",
     about: "",
-    badgeColor: ""
   }
 
 
@@ -146,7 +155,7 @@ function handleSubmit(e) {
           onChange={handleChange}
           name="about"
         />
-        <button>Submit</button>
+        {elButton}
       </form>
       {badge.map((item, index) => {
         if(index > 0) {
