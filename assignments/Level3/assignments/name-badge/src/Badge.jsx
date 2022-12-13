@@ -19,10 +19,10 @@ function Badge(props) {
             <div id={props.item.badgeColor} className="header">Hello, my name is ...</div>
             <p>Name: {props.item.firstName} {props.item.lastName}</p>
             <p>Phone: {phone}</p>
-            <p>Place of birth: {props.item.birthPlace}</p>
+            <p>Born: {props.item.birthPlace}</p>
             <p>Favorite food: {props.item.favoriteFood}</p>
-            <p>Email: {props.item.email}</p><br />
-            <p>About: <span className="about">{props.item.about}</span></p>
+            <p>Email: {props.item.email}</p>
+            <p>About: <p className="about">{props.item.about}</p></p>
         </div>
     )
 }
