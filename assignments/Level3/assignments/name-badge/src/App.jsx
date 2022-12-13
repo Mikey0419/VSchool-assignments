@@ -50,12 +50,19 @@ function validatePhone(num) {
 }
 
 function whichButton() {
-  let button
-  for(const item in formData) {
-    button = `${formData[item]}` === "" ? (<button disabled>Submit</button>) : (<button>Submit</button>)
+  let newArr = []
+  let count = 0;
+  for (const [key, value] of Object.entries(formData)) {
+    newArr.push(value.length >= 3)
   }
 
-  return button
+  for(let i = 0; i < newArr.length; i++) {
+    console.log(newArr[i])
+    newArr[i] ? count++ : ''
+  }
+
+  console.log(count)
+  if(count === 7) { return <button>Submit</button> } else { return <button disabled>Submit</button>}
 }
 
 const elButton = whichButton()
