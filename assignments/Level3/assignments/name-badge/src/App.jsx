@@ -16,7 +16,18 @@ function App() {
     about: ""
   })
 
-  const [badge, setBadge] = useState([])
+  const [badge, setBadge] = useState([
+    {
+      id: 0,
+      first: "",
+      last: "",
+      email: "",
+      birth: "",
+      phone: "",
+      food: "",
+      about: ""
+    }
+  ])
 
 function handleChange(e) {
   const {name, value} = e.target;
@@ -42,13 +53,20 @@ function handleSubmit(e) {
     about: ""
   }
 
-  const newBadge = [formData]
-  setBadge(prev => [...prev, newBadge])
-  
-  console.log(badge)
+  const newBadge = {
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    email: formData.email,
+    birthPlace: formData.birthPlace,
+    phone: formData.phone,
+    favoriteFood: formData.favoriteFood,
+    about: formData.about
+  }
 
+  setBadge(prev => [...prev, newBadge])
   setFormData(resetData)
-  myform.reset()
+
+  myform.firstName.focus()
 }
 
   return (
@@ -104,7 +122,13 @@ function handleSubmit(e) {
         />
         <button>Submit</button>
       </form>
-      {el}
+      {badge.map((item, index) => {
+        if(index > 0) {
+          return (
+            <Badge item={item} key={index} />
+          )}
+        })
+      }
     </div>
   )
 }

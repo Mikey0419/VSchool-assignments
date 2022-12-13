@@ -3,8 +3,9 @@ function Badge(props) {
 
     return(
         <div className="badge-container">
-            Name: {props.item.firstName} {props.item.lastName}<br />
-            Phone: {props.item.phone}
+            <p>Name: {props.item.firstName} {props.item.lastName}</p>
+            <p>Phone: {props.item.phone}</p>
+            <p>Place of birth: {props.item.birthPlace}</p>
         </div>
     )
 }
