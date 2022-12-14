@@ -25,6 +25,7 @@
     width: 477px;
     margin-top: 36px;
     align-items: center;
+    height: auto;
 }
 
 .field-container {
@@ -47,7 +48,7 @@ input[type=text] {
 
 .meme-image {
     width: 477px;
-    height: 318px;
+    height: auto;
     margin: 36px 20px 55px 0;
 }
 
