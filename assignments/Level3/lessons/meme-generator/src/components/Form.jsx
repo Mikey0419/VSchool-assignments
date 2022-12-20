@@ -9,9 +9,17 @@ function Form() {
         memeImg: "http://i.imgflip.com/1bij.jpg"
     })
 
+    const [allMemes, setAllMemes] = React.useState("")
+
+    React.useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setAllMemes(data.data.memes))
+    }, [meme])
+
     function randomMeme(e) {
         e.preventDefault();
-        const memeArray = data.data.memes;
+        const memeArray = [...allMemes]
         const randomNumber = Math.floor(Math.random() * (memeArray.length - 1));
         const url = memeArray[randomNumber].url;
 
