@@ -1,13 +1,15 @@
-import Navbar from './components/Navbar'
 import Form from './components/Form'
 import './App.css'
 
+function Sidebar() {
+  return(
+    <div className="sidebar"></div>
+  )
+}
+
 function App() {
   return (
-    <div className="meme-container">
-      <Navbar />
-      <Form />
-    </div>
+        <Form />
   )
 }
 
