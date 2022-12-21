@@ -3,35 +3,6 @@ import Navbar from './Navbar'
 import './list.css'
 import './form.css'
 
-/*
-
-<div className="screen">
-            <div className="sidebar">
-                Saved Memes
-                {saved.map((item, index) => {
-                    if(index !== 0) {
-                        return (
-                            <img
-                            style={{height: "100px", width: "300px", padding: "5px"}}
-                            onClick={() => {
-                                setMeme({
-                                    topText: item.topText,
-                                    bottomText: item.bottomText,
-                                    memeImg: item.memeImg
-                                })
-                            
-                                console.log(item.uuid)}
-                            }
-                            key={index}
-                            src={item.memeImg}
-                            />
-                        )
-                        }
-                })}
-            </div>
-
-*/
-
 function Form() {
 
     const [meme, setMeme] = React.useState({
@@ -76,7 +47,7 @@ function Form() {
         tempArr[i].memeImg = meme.memeImg;
 
         setSaved(tempArr);
-        
+
         saveChanges ? setSaveChanges(false) : '';
     }
 
@@ -103,7 +74,6 @@ function Form() {
         const url = memeArray[randomNumber].url;
 
         console.log(`[${randomNumber}] ${memeArray[randomNumber].url} <${memeArray[randomNumber].id}>`);
-
 
         setMeme(prev => ({
                 ...prev,
@@ -192,15 +162,14 @@ function Form() {
                 </form>
             </div>
             <button
-            className="saveButton"
-            onClick={() => {
-                addMemeToList(meme.topText, meme.bottomText, meme.memeImg);
-                setSaveChanges(false);
-            }}>
-                + Add to list
+                className="saveButton"
+                onClick={() => {
+                    addMemeToList(meme.topText, meme.bottomText, meme.memeImg);
+                    setSaveChanges(false);
+                }}
+            >+ Add to list
             </button>
-            {saveChanges &&
-                <button onClick={() => saveEditedMeme(editIndex)} className="editButton">Save changes</button>}
+            {saveChanges && <button onClick={() => saveEditedMeme(editIndex)} className="editButton">Save changes</button>}
         </div>
     )
 }
