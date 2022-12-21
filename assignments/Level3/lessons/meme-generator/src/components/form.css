@@ -123,8 +123,8 @@ input[type=text] {
 
 .saveButton {
     position: absolute;
-    top: 10%;
-    right: 30%;
+    top: 5%;
+    left: 267px;
     transform: translate(100%);
     background-color: rgb(77, 240, 94);
     border: 1px solid black;
@@ -153,4 +153,21 @@ input[type=text] {
 
 .editButton:hover {
     background-color: rgb(123, 164, 230);
+}
+
+.cancelButton {
+    position: absolute;
+    top: 15%;
+    left: 294px;
+    transform: translate(100%);
+    background-color: rgb(236, 53, 47);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+}
+
+.cancelButton:hover {
+    background-color: rgb(239, 158, 158);
 }

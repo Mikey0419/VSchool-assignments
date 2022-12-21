@@ -12,6 +12,7 @@ function Form() {
     })
 
     const [allMemes, setAllMemes] = React.useState([])
+
     const [saved, setSaved] = React.useState([{
         uuid: 0,
         topText: "",
@@ -20,6 +21,7 @@ function Form() {
     }])
 
     const [saveChanges, setSaveChanges] = React.useState(false)
+
     const [editIndex, setEditIndex] = React.useState(0);
 
     React.useEffect(() => {
@@ -94,12 +96,11 @@ function Form() {
         <div className="screen">
             <div className="sidebar">
                 <span className="savedlist">Saved Memes</span>
+                <span className="subText">click to edit</span>
                 {saved.map((item, index) => {
                     if(index !== 0) {
                         return (
                         <div
-                            id={index}
-                            uuid={item.uuid}
                             key={index}
                             className="mini-meme"
                         >
@@ -166,10 +167,33 @@ function Form() {
                 onClick={() => {
                     addMemeToList(meme.topText, meme.bottomText, meme.memeImg);
                     setSaveChanges(false);
+                    setMeme(prev => ({
+                        ...prev,
+                        topText: "",
+                        bottomText: ""
+                    }))
                 }}
             >+ Add to list
             </button>
-            {saveChanges && <button onClick={() => saveEditedMeme(editIndex)} className="editButton">Save changes</button>}
+            {saveChanges && <button
+                onClick={() => {
+                saveEditedMeme(editIndex)
+                setMeme(prev => ({
+                    ...prev,
+                    topText: "",
+                    bottomText: ""
+                }))}}
+                className="editButton">Save changes</button>}
+            {saveChanges && <button
+                onClick={() => {
+                    setSaveChanges(false)
+                    setMeme(prev => ({
+                        ...prev,
+                        topText: "",
+                        bottomText: ""
+                    }))
+                }}
+                className="cancelButton">Cancel</button>}
         </div>
     )
 }
