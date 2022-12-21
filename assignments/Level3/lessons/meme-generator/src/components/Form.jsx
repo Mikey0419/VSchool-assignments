@@ -1,6 +1,36 @@
 import React from 'react'
 import Navbar from './Navbar'
+import './list.css'
 import './form.css'
+
+/*
+
+<div className="screen">
+            <div className="sidebar">
+                Saved Memes
+                {saved.map((item, index) => {
+                    if(index !== 0) {
+                        return (
+                            <img
+                            style={{height: "100px", width: "300px", padding: "5px"}}
+                            onClick={() => {
+                                setMeme({
+                                    topText: item.topText,
+                                    bottomText: item.bottomText,
+                                    memeImg: item.memeImg
+                                })
+                            
+                                console.log(item.uuid)}
+                            }
+                            key={index}
+                            src={item.memeImg}
+                            />
+                        )
+                        }
+                })}
+            </div>
+
+*/
 
 function Form() {
     const [meme, setMeme] = React.useState({
@@ -77,12 +107,13 @@ function Form() {
     return(
         <div className="screen">
             <div className="sidebar">
-                Saved Memes
+                <span className="savedlist">Saved Memes</span>
                 {saved.map((item, index) => {
                     if(index !== 0) {
                         return (
-                            <img
-                            style={{height: "100px", width: "300px", padding: "5px"}}
+                        <div
+                            key={index}
+                            className="mini-meme"
                             onClick={() => {
                                 setMeme({
                                     topText: item.topText,
@@ -92,11 +123,26 @@ function Form() {
                             
                                 console.log(item.uuid)}
                             }
-                            key={index}
-                            src={item.memeImg}
+                        >
+                            <div
+                                className="delete"
+                                onClick={() => {
+                                    setSaved(
+                                        saved.filter(i => i.uuid !== item.uuid)
+                                    )
+
+                                    console.log("Delete")
+                                }}
+                            >X
+                            </div>
+                            <img
+                                className="mini-meme-image"
+                                src={item.memeImg}
                             />
-                        )
-                        }
+                            <h2 className="mini-meme--text mini-top">{item.topText}</h2>
+                            <h2 className="mini-meme--text mini-bottom">{item.bottomText}</h2>
+                        </div>
+                        )}
                 })}
             </div>
             <div className="meme-container">
