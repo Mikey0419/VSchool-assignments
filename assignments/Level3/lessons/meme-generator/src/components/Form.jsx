@@ -77,6 +77,7 @@ function Form() {
     return(
         <div className="screen">
             <div className="sidebar">
+                Saved Memes
                 {saved.map((item, index) => {
                     if(index !== 0) {
                         return (
@@ -128,7 +129,7 @@ function Form() {
             onClick={() => {
                 addMemeToList(meme.topText, meme.bottomText, meme.memeImg)
             }}>
-                Save
+                + Add to list
             </button>
         </div>
     )
