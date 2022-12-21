@@ -10,7 +10,7 @@ function Form() {
     })
 
     const [allMemes, setAllMemes] = React.useState([])
-    const [savedMemes, setSavedMemes] = React.useState([{
+    const [saved, setSaved] = React.useState([{
         uuid: 0,
         topText: "",
         bottomText: "",
@@ -23,9 +23,20 @@ function Form() {
             .then(data => setAllMemes(data.data.memes))
     }, [])
 
+    function create_UUID(){
+        var dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);
+            return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+        });
+
+        return uuid;
+    }
+
     function addMemeToList(topText, bottomText, url) {
 
-        let tempID = Math.floor(Math.random() * 10)
+        let tempID = create_UUID();
 
         const tempMeme = {
             uuid: tempID,
@@ -34,12 +45,9 @@ function Form() {
             memeImg: url
         }
 
-        setSavedMemes(prev => ({
-            ...prev,
-            tempMeme
-        }))
+        setSaved(prev => [...prev, tempMeme])
 
-        console.log(savedMemes)
+        console.log(saved)
     }
 
     function randomMeme(e) {
@@ -68,7 +76,28 @@ function Form() {
 
     return(
         <div className="screen">
-            <div className="sidebar"></div>
+            <div className="sidebar">
+                {saved.map((item, index) => {
+                    if(index !== 0) {
+                        return (
+                            <img
+                            style={{height: "100px", width: "300px", padding: "5px"}}
+                            onClick={() => {
+                                setMeme({
+                                    topText: item.topText,
+                                    bottomText: item.bottomText,
+                                    memeImg: item.memeImg
+                                })
+                            
+                                console.log(item.uuid)}
+                            }
+                            key={index}
+                            src={item.memeImg}
+                            />
+                        )
+                        }
+                })}
+            </div>
             <div className="meme-container">
                 <Navbar />
                 <form onSubmit={randomMeme} name="myform" className="container">
@@ -94,6 +123,13 @@ function Form() {
                     </div>
                 </form>
             </div>
+            <button
+            className="saveButton"
+            onClick={() => {
+                addMemeToList(meme.topText, meme.bottomText, meme.memeImg)
+            }}>
+                Save
+            </button>
         </div>
     )
 }
