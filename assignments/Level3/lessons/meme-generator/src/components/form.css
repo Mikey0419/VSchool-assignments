@@ -137,3 +137,20 @@ input[type=text] {
 .saveButton:hover {
     background-color: rgb(146, 247, 156);
 }
+
+.editButton {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    transform: translate(100%);
+    background-color: rgb(47, 119, 236);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+}
+
+.editButton:hover {
+    background-color: rgb(123, 164, 230);
+}

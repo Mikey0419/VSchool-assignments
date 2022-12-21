@@ -33,6 +33,7 @@ import './form.css'
 */
 
 function Form() {
+
     const [meme, setMeme] = React.useState({
         topText: "",
         bottomText: "",
@@ -46,6 +47,9 @@ function Form() {
         bottomText: "",
         memeImg: ""
     }])
+
+    const [saveChanges, setSaveChanges] = React.useState(false)
+    const [editIndex, setEditIndex] = React.useState(0);
 
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
@@ -62,6 +66,18 @@ function Form() {
         });
 
         return uuid;
+    }
+
+    function saveEditedMeme(i) {
+        let tempArr = [...saved];
+
+        tempArr[i].topText = meme.topText;
+        tempArr[i].bottomText = meme.bottomText;
+        tempArr[i].memeImg = meme.memeImg;
+
+        setSaved(tempArr);
+        
+        saveChanges ? setSaveChanges(false) : '';
     }
 
     function addMemeToList(topText, bottomText, url) {
@@ -112,17 +128,10 @@ function Form() {
                     if(index !== 0) {
                         return (
                         <div
+                            id={index}
+                            uuid={item.uuid}
                             key={index}
                             className="mini-meme"
-                            onClick={() => {
-                                setMeme({
-                                    topText: item.topText,
-                                    bottomText: item.bottomText,
-                                    memeImg: item.memeImg
-                                })
-                            
-                                console.log(item.uuid)}
-                            }
                         >
                             <div
                                 className="delete"
@@ -130,12 +139,24 @@ function Form() {
                                     setSaved(
                                         saved.filter(i => i.uuid !== item.uuid)
                                     )
-
-                                    console.log("Delete")
+                                    
+                                    setSaveChanges(false);
+                                    console.log("Delete");
                                 }}
                             >X
                             </div>
                             <img
+                                onClick={() => {
+                                    setMeme({
+                                        topText: item.topText,
+                                        bottomText: item.bottomText,
+                                        memeImg: item.memeImg
+                                    })
+                                    
+                                    setSaveChanges(true);
+                                    setEditIndex(index);
+                                    console.log("Editing: ", index);}
+                                }
                                 className="mini-meme-image"
                                 src={item.memeImg}
                             />
@@ -173,10 +194,13 @@ function Form() {
             <button
             className="saveButton"
             onClick={() => {
-                addMemeToList(meme.topText, meme.bottomText, meme.memeImg)
+                addMemeToList(meme.topText, meme.bottomText, meme.memeImg);
+                setSaveChanges(false);
             }}>
                 + Add to list
             </button>
+            {saveChanges &&
+                <button onClick={() => saveEditedMeme(editIndex)} className="editButton">Save changes</button>}
         </div>
     )
 }
