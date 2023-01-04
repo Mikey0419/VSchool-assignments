@@ -29,7 +29,7 @@ function Codebox(props) {
 
     return(
             <div className="codebox-container">
-                <p style={modalStyle} className="copy-modal">Copied!</p>
+                <p style={modalStyle} className="copy-modal">Copied to clipboard</p>
                 <code
                     className="codebox"
                     onClick={() => {

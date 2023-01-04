@@ -26,13 +26,16 @@
 
 .copy-modal {
     padding: 10px;
-    background-color: rgb(112, 113, 113);
+    background-color: rgb(204, 204, 204);
     display: flex;
     align-items: center;
     color: black;
     height: 10px;
     position: absolute;
-    top: -30px;
-    left: -10px;
+    bottom: -30px;
+    left: 50%;
     border-radius: 5px;
+    transform: translate(-50%);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
 }
