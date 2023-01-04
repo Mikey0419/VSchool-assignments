@@ -4,22 +4,18 @@ import Codebox from './components/Codebox'
 import './App.css'
 
 function App() {
-  const [colorFirst, setColorFirst] = useState("#FFF");
-  const [colorSecond, setColorSecond] = useState("#000");
 
   const [inputColors, setInputColors] = useState({
-    firstColor: "",
-    secondColor: "",
-    angle: ""
+    firstColor: "#FFF",
+    secondColor: "#000",
+    angle: "90"
   });
-
-  const [angle, setAngle] = useState(0);
 
   return (
     <div className="container">
       <div className="left-side">
-        <Gradient firstColor={colorFirst} secondColor={colorSecond} angle={angle} />
-        <Codebox firstColor={colorFirst} secondColor={colorSecond} angle={angle} />
+        <Gradient firstColor={inputColors.firstColor} secondColor={inputColors.secondColor} angle={inputColors.angle} />
+        <Codebox firstColor={inputColors.firstColor} secondColor={inputColors.secondColor} angle={inputColors.angle} />
       </div>
       <div className="right-side">
         <p>input stuff goes here</p>
