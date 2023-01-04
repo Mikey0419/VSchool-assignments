@@ -28,6 +28,7 @@ function App() {
         <Codebox colors={colors} angle={angle} />
       </div>
       <div className="right-side">
+        <button onClick={() => setColors(prev => [...prev, "#FFFFFF"])}>Add color</button>
         {colors.map((item, index) => {
           console.log(item)
           return(
@@ -42,15 +43,14 @@ function App() {
                   </input>
                   <span className="hex-code">{item}</span>
                   {colors.length > 2 && <p className="delete" onClick={() => {
-                    console.log('clicked')
+                    console.log('clicked', index)
                     setColors(
-                      colors.filter(item => item !== colors[index]))
+                      colors.filter((item, id) => id !== index))
                   }}>X</p>}
               </div>
             </div>
           )
         })}
-        <button onClick={() => setColors(prev => [...prev, "#FFFFFF"])}>Add color</button>
         <div className="angle-row">
           Angle:
           <input

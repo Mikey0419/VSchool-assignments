@@ -18,3 +18,21 @@
 .value {
     color: rgb(32, 208, 239);
 }
+
+.codebox-container {
+    display: flex;
+    position: relative;
+}
+
+.copy-modal {
+    padding: 10px;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    color: black;
+    height: 10px;
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    border-radius: 5px;
+}
