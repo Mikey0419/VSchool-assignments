@@ -41,10 +41,15 @@ function App() {
                   onChange={(e) => handleChange(e, index)}>
                   </input>
                   <span className="hex-code">{item}</span>
+                  {colors.length > 2 && <p className="delete" onClick={() => {
+                    console.log('clicked')
+                    colors.filter(item => item.id !== colors[index].id)
+                  }}>X</p>}
               </div>
             </div>
           )
         })}
+        <button onClick={() => setColors(prev => [...prev, "#FFFFFF"])}>Add color</button>
         <div className="angle-row">
           Angle:
           <input

@@ -9,10 +9,9 @@ function Codebox(props) {
             <code
                 className="codebox"
                 onClick={() => {
-                    console.log(text);
-                    navigator.clipboard.writeText("");
-                    navigator.clipboard.writeText(text);
-                    alert('Copied to clipboard!');
+                    let code = document.querySelector("code").innerText;
+                    console.log(code);
+                    navigator.clipboard.writeText(code);
                 }}>
             <span className="selector">background:</span> <span className="gradient-type">linear-gradient(</span>
                 <span className="value">{props.angle}deg</span>

@@ -7,7 +7,6 @@ function Gradient(props) {
     let gradientCode =`linear-gradient(${props.angle}deg, `;
 
     for(let i = 0; i < arrLength; i++) {
-        console.log(colorArray[i]);
         (i !== arrLength - 1) ? gradientCode += `${colorArray[i]}, ` : gradientCode += `${colorArray[i]})`
     }
 
