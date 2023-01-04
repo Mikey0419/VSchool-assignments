@@ -1,9 +1,15 @@
 import './codebox.css'
 
 function Codebox(props) {
-    const text = `background: linear-gradient(${props.angle}deg, ${props.colors[0]}, ${props.colors[1]})
-    -moz-background: linear-gradient(${props.angle}deg, ${props.colors[0]}, ${props.colors[1]})
-    -webkit: linear-gradient(${props.angle}deg, ${props.colors[0]}, ${props.colors[1]})`
+    const codeChunk = props.colors.map((item, index) => {
+        if(index !== props.colors.length - 1) {
+            return(
+                <><span className="value">{item}</span><span className="selector">, </span></>
+        )} else {
+            return(
+                <><span className="value">{item}</span></>
+            )}
+    })
 
     return(
             <code
@@ -13,28 +19,23 @@ function Codebox(props) {
                     console.log(code);
                     navigator.clipboard.writeText(code);
                 }}>
-            <span className="selector">background:</span> <span className="gradient-type">linear-gradient(</span>
-                <span className="value">{props.angle}deg</span>
+            <span className="selector">background: </span> 
+            <span className="gradient-type">linear-gradient(</span>
+            <span className="value">{props.angle}deg</span>
                 <span className="selector">, </span> 
-                <span className="value">{props.colors[0]}</span>
-                <span className="selector">, </span>
-                <span className="value">{props.colors[1]}</span>
-                <span className="gradient-type">)</span><br />
+                {codeChunk}
+                <span className="gradient-type">)</span><br /><br />
 
-                <span className="selector">-moz-background:</span> <span className="gradient-type">linear-gradient(</span>
+                <span className="selector">-moz-background: </span> <span className="gradient-type">linear-gradient(</span>
                 <span className="value">{props.angle}deg</span>
                 <span className="selector">, </span> 
-                <span className="value">{props.colors[0]}</span>
-                <span className="selector">, </span>
-                <span className="value">{props.colors[1]}</span>
-                <span className="gradient-type">)</span><br />
+                {codeChunk}
+                <span className="gradient-type">)</span><br /><br />
 
-                <span className="selector">-webkit:</span> <span className="gradient-type">linear-gradient(</span>
+                <span className="selector">-webkit: </span> <span className="gradient-type">linear-gradient(</span>
                 <span className="value">{props.angle}deg</span>
                 <span className="selector">, </span> 
-                <span className="value">{props.colors[0]}</span>
-                <span className="selector">, </span>
-                <span className="value">{props.colors[1]}</span>
+                {codeChunk}
                 <span className="gradient-type">)</span><br />
 
             </code>

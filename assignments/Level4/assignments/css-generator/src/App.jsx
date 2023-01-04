@@ -43,7 +43,8 @@ function App() {
                   <span className="hex-code">{item}</span>
                   {colors.length > 2 && <p className="delete" onClick={() => {
                     console.log('clicked')
-                    colors.filter(item => item.id !== colors[index].id)
+                    setColors(
+                      colors.filter(item => item !== colors[index]))
                   }}>X</p>}
               </div>
             </div>
