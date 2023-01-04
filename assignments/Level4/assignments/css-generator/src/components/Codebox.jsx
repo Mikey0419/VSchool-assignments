@@ -34,10 +34,8 @@ function Codebox(props) {
                     className="codebox"
                     onClick={() => {
                         let code = document.querySelector("code").innerText;
-                        console.log(code);
                         navigator.clipboard.writeText(code);
                         setShowModal(true)
-                        console.log(showModal)
                     }}>
                 <span className="selector">background: </span> 
                 <span className="gradient-type">linear-gradient(</span>

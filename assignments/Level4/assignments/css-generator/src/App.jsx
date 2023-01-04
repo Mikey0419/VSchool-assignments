@@ -6,11 +6,9 @@ import './App.css'
 function App() {
 
   const [colors, setColors] = useState(["#FFFFFF", "#000000"]);
-
   const [angle, setAngle] = useState(90);
 
   function handleChange(e, id) {
-    console.log(e.target.value);
     const tempArr = [...colors];
     tempArr[id] = e.target.value;
 
