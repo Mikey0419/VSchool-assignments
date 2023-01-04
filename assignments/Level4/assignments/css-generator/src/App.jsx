@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   const [colorFirst, setColorFirst] = useState("#FFF");
-  const [colorSecond, setColorSecond] = useState("#FFF");
+  const [colorSecond, setColorSecond] = useState("#000");
 
   const [inputColors, setInputColors] = useState({
     firstColor: "",
@@ -22,6 +22,7 @@ function App() {
         <Codebox firstColor={colorFirst} secondColor={colorSecond} angle={angle} />
       </div>
       <div className="right-side">
+        <p>input stuff goes here</p>
       </div>
     </div>
   )

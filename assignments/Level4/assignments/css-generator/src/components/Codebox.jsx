@@ -1,12 +1,12 @@
+import './codebox.css'
+
 function Codebox(props) {
     return(
-        <textarea>
-            <code>
-            background: linear-gradient({props.angle}, {props.firstColor}, {props.secondColor}),
-            '-moz-background': linear-gradient({props.angle}, {props.firstColor}, {props.secondColor}),
-            '-webkit': linear-gradient({props.angle}, {props.firstColor}, {props.secondColor})
+            <code className="codebox">
+            background: linear-gradient({props.angle}, {props.firstColor}, {props.secondColor})<br />
+            -moz-background: linear-gradient({props.angle}, {props.firstColor}, {props.secondColor})<br />
+            -webkit: linear-gradient({props.angle}, {props.firstColor}, {props.secondColor})
             </code>
-        </textarea>
     )
 }
 
