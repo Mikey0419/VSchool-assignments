@@ -28,7 +28,7 @@ function App() {
         <Codebox colors={colors} angle={angle} />
       </div>
       <div className="right-side">
-        <button onClick={() => setColors(prev => [...prev, "#FFFFFF"])}>Add color</button>
+        <button className="add-button" onClick={() => setColors(prev => [...prev, "#FFFFFF"])}>Add color</button>
         {colors.map((item, index) => {
           console.log(item)
           return(
