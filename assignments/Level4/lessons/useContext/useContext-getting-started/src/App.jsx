@@ -1,10 +1,15 @@
-import { useState } from 'react'
 import './App.css'
+import Button from './Button'
+import Header from './Header'
+import {ThemeContextProvider} from './contextProvider'
 
 function App() {
 
   return (
-    <p>App stuff goes here</p>
+    <ThemeContextProvider>
+      <Header />
+      <Button />
+    </ThemeContextProvider>
   )
 }
 
