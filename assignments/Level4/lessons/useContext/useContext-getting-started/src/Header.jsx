@@ -8,8 +8,8 @@ function Header() {
     return(
         <div className={`${theme}-header`}>
             <p>Home</p>
-            <p>Home</p>
-            <p>Home</p>
+            <p>Contact</p>
+            <p>About</p>
         </div>
     )
 }

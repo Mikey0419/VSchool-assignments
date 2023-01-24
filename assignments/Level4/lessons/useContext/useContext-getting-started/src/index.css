@@ -1,11 +1,14 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div, button { 
-  padding: 5px 10px; 
-  margin: 5px 0px; 
+button { 
+  padding: 15px 30px; 
+  border-radius: 2px;
+  margin: 5px 0px;
+  
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -36,6 +39,14 @@ button {
   border-bottom: 2px black solid;
 }
 
+.light-main {
+  background-color: aquamarine;
+}
+
+.dark-main {
+  background-color: #3a3b3c;
+}
+
 .dark-header {
   background-color: #3a3b3c;
   color: white;
@@ -46,4 +57,29 @@ button {
   flex-direction: row;
   justify-content: space-around;
   border-bottom: 2px #FFF solid;
+}
+
+.dark-footer {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a3b3c;
+  color: white;
+}
+
+.light-footer {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px black solid;
 }

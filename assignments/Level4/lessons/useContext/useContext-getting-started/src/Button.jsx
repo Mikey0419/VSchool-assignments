@@ -5,10 +5,8 @@ function Button() {
 
     const {theme, toggleTheme} = useContext(ThemeContext)
 
-    console.log(theme)
-
     return(
-        <button className={`${theme}-theme`} onClick={toggleTheme}>Click here</button>
+        <button className={`${theme}-theme`} onClick={toggleTheme}>{theme === "light" ? "Dark" : "Light"} Theme</button>
     )
 }
 

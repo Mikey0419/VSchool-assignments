@@ -1,14 +1,16 @@
 import './App.css'
 import Button from './Button'
 import Header from './Header'
-import {ThemeContextProvider} from './contextProvider'
+import Footer from './Footer'
+import { ThemeContextProvider } from './contextProvider'
 
 function App() {
 
   return (
     <ThemeContextProvider>
-      <Header />
-      <Button />
+        <Header />
+        <Button />
+        <Footer />
     </ThemeContextProvider>
   )
 }
