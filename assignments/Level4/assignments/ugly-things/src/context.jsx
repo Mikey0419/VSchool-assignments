@@ -4,16 +4,23 @@ const Context = createContext()
 
 const ContextProvider = (props) => {
 
-    const [list, setList] = useState([{
-        title: "Test 1",
-        description: "Test description",
-        imgUrl: "https://www.example.com/img.jpeg"
-    }])
+    const [list, setList] = useState([
+        {
+            title: "Test 1",
+            description: "Test description 1",
+            imgUrl: "https://www.example.com/img1.jpeg"
+        },
+        {
+            title: "Test 2",
+            description: "Test description 2",
+            imgUrl: "https://www.example.com/img2.jpeg"
+        }
+    ])
 
     useEffect(() => {
         fetch("https://api.vschool.io/michaelhardin/thing")
             .then(res => res.json())
-            .then(data => setList(data.data.memes))
+            .then(data => setList(data.data))
     }, [])
 
     return(
