@@ -13,7 +13,7 @@ const ContextProvider = (props) => {
                 console.log(res.data)
                 setList(res.data)
             })
-    }, [list])
+    }, [])
 
     function addItem(itemTitle, desc, url) {
 
@@ -23,21 +23,22 @@ const ContextProvider = (props) => {
             imgUrl: url
         }
 
-
         axios.post("https://api.vschool.io/michaelhardin/thing", newItem)
             .then(res => {
                 console.log(res.data)
-                setList(prev => [...prev, newItem])
+                setList(prev => [...prev, res.data])
             })
     }
 
     function deleteItem(itemId) {
+        /* setList(
+            list.filter(i => i._id !== itemId)
+        ) */
+
         axios.delete(`https://api.vschool.io/michaelhardin/thing/${itemId}`)
             .then(res => {
                 console.log(res.data)
-                setList(
-                    list.filter(i => i.id === itemId)
-                )
+                setList(list.filter(i => i._id !== itemId))
             })
     }
 

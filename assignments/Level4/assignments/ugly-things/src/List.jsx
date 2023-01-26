@@ -13,7 +13,8 @@ function List(props) {
             <div key={index}>
                 <p><b>{item.title}</b></p>
                 <p><i>{item.description}</i></p>
-                {item._id && <button onClick={() => deleteItem(item._id)}>Delete</button>}
+                <p><u>{item._id}</u></p>
+                <button onClick={() => deleteItem(item._id)}>Delete</button>
                 <img width="175px" height="175px" src={item.imgUrl} />
             </div>
         )
@@ -21,7 +22,7 @@ function List(props) {
 
     return(
         <>
-            {el}
+            {el.length > 0 && el}
             <button onClick={() => addItem('test', 'test test test', testImg)}>Add</button>
         </>
     )
