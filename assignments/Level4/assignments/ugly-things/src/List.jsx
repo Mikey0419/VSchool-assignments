@@ -6,7 +6,12 @@ const defaultImage = "https://i0.wp.com/shahpourpouyan.com/wp-content/uploads/20
 
 function List(props) {
     
-    const {list, addItem, deleteItem} = useContext(Context)
+    const {list, addItem, deleteItem, updateItem} = useContext(Context)
+
+    const [itemIndex, setItemIndex] = useState({
+        i: 0,
+        id: 0
+    })
 
     const [formData, setFormData] = useState(
         {
@@ -16,18 +21,50 @@ function List(props) {
         }
     )
 
+    const [edit, setEdit] = useState(false)
+
     const el = list.map((item, index) => {
         return(
-            <div key={index}>
+            <div className="item" key={index}>
                 <p><b>{item.title}</b></p>
-                <p><i>{item.description}</i></p>
-                <p><u>{item._id}</u></p>
                 <img width="250px" height="175px" src={item.imgUrl} />
-                <br />
-                <button className='delete' onClick={() => deleteItem(item._id)}>Delete</button>
+                <p className="description"><i>{item.description}</i></p>
+                <div className="button-row">
+                    <button className='delete' onClick={() => {
+                        deleteItem(item._id);
+                        setEdit(false)
+                        clearForm();
+                    }}>Delete
+                    </button>
+                    <button className='edit' onClick={() => {
+                        const whichItem = {
+                            i: index,
+                            id: item._id
+                        }
+                        setItemIndex(whichItem)
+
+                        setFormData({
+                            title: item.title,
+                            description: item.description,
+                            url: item.imgUrl
+                        })
+                        setEdit(true)
+                    }
+                    }>Edit</button>
+                </div>
             </div>
         )
     })
+
+    function clearForm() {
+        let data = {
+            title: '',
+            description: '',
+            url: ''
+        }
+
+        setFormData(data);
+    }
 
     function handleChange(event) {
         event.preventDefault();
@@ -41,19 +78,11 @@ function List(props) {
         })
     }
 
-    function clearForm() {
-        let data = {
-            title: '',
-            description: '',
-            url: ''
-        }
-
-        setFormData(data);
-    }
-
     return(
-        <>
-            {el.length > 0 && el}
+        <div className="container">
+            <div className="row">
+                {el.length > 0 && el}
+            </div>
             <br />
             <form className="form">
                 <input
@@ -81,14 +110,23 @@ function List(props) {
                 <button
                     className="create"
                     onClick={(e) => {
+                        
                         e.preventDefault();
-                        addItem(formData.title === '' ? 'Title' : formData.title, formData.description === '' ? 'Description' : formData.description, formData.url === '' ? defaultImage : formData.url);
-                        clearForm();
+
+                        if(edit === false) {
+                            addItem(formData.title === '' ? 'Title' : formData.title, formData.description === '' ? 'Description' : formData.description, formData.url === '' ? defaultImage : formData.url);
+                            clearForm();
+                        } else {
+                            console.log("Updated!");
+                            updateItem(itemIndex.id, itemIndex.i, formData.title, formData.description, formData.url);
+                            clearForm();
+                            setEdit(false);
+                        }
                     }}>
-                        Add
+                        {edit ? "save" : "add"}
                 </button>
             </form>
-        </>
+        </div>
     )
 }
 

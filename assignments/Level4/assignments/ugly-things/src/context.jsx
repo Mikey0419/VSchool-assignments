@@ -42,12 +42,34 @@ const ContextProvider = (props) => {
             })
     }
 
+    function updateItem(itemId, index, itemTitle, desc, url) {
+
+        const updatedItem = {
+            title: itemTitle,
+            description: desc,
+            imgUrl: url
+        }
+
+        axios.put(`https://api.vschool.io/michaelhardin/thing/${itemId}`, updatedItem)
+            .then(res => {
+                console.log(res.data)
+                let newArr = [...list]
+
+                newArr[index].title = itemTitle;
+                newArr[index].description = desc;
+                newArr[index].imgUrl = url;
+
+                setList(newArr);
+            })
+    }
+
     return(
         <Context.Provider
             value={{
                 list,
                 addItem,
-                deleteItem
+                deleteItem,
+                updateItem
             }}>
             {props.children}
         </Context.Provider>
