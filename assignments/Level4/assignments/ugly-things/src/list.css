@@ -67,38 +67,51 @@ button {
     text-transform: uppercase;
     color: #fff;
     border: none;
-    border-radius: 0.5em;
+    border-radius: 5px;
     cursor: pointer;
     position: relative;
 }
 
 button.create {
-    background: linear-gradient(180deg, rgba(55,233,46,0.9178265056022409) 0%, rgba(5,142,13,1) 100%);
+    background: linear-gradient(150deg, rgba(55,233,46,0.9178265056022409) 0%, rgb(3, 178, 15) 100%);
     width: 90%;
 }
 
 button.create:hover {
-    background: linear-gradient(0deg, rgba(55,233,46,0.9178265056022409) 0%, rgba(5,142,13,1) 100%);
+    background: linear-gradient(-30deg, rgba(55,233,46,0.9178265056022409) 0%, rgba(3,178,15,1) 100%);
 }
 
 button.delete {
     background: rgb(255,11,11);
-    background: linear-gradient(0deg, rgba(255,11,11,1) 24%, rgba(246,124,124,1) 100%);
+    background: linear-gradient(150deg, rgba(255,11,11,1) 24%, rgb(197, 34, 34) 100%);
     width: 40%;
 }
 
 button.delete:hover {
     background: rgb(255,11,11);
-    background: linear-gradient(180deg, rgba(255,11,11,1) 24%, rgba(246,124,124,1) 100%);
+    background: linear-gradient(-30deg, rgba(255,11,11,1) 24%, rgba(197, 34, 34,1) 100%);
 }
 
 button.edit {
     /* background: rgb(77,152,223); */
     width: 40%;
-    background-image: linear-gradient(0deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
+    background-image: linear-gradient(-30deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
 }
 
 button.edit:hover {
     /* background: rgb(77,152,223); */
-    background-image: linear-gradient(180deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
+    background-image: linear-gradient(150deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);
+}
+
+button.save {
+    /* background: rgb(77,152,223); */
+    width: 90%;
+    /*background-image: linear-gradient(0deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);*/
+    background: linear-gradient(135deg, #9b10b7, #ef6bde)
+}
+
+button.save:hover {
+    /* background: rgb(77,152,223); */
+    /*background-image: linear-gradient(180deg, rgba(77,152,223,1) 0%, rgba(76,214,211,1) 100%);*/
+    background: linear-gradient(135deg, #ef6bde, #9b10b7)
 }

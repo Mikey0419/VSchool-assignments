@@ -80,10 +80,6 @@ function List(props) {
 
     return(
         <div className="container">
-            <div className="row">
-                {el.length > 0 && el}
-            </div>
-            <br />
             <form className="form">
                 <input
                     type="text"
@@ -108,7 +104,7 @@ function List(props) {
                     value={formData.url}
                 />
                 <button
-                    className="create"
+                    className={edit ? "save" : "create"}
                     onClick={(e) => {
                         
                         e.preventDefault();
@@ -126,6 +122,11 @@ function List(props) {
                         {edit ? "save" : "add"}
                 </button>
             </form>
+            <br />
+            <br />
+            <div className="row">
+                {el.length > 0 && el}
+            </div>
         </div>
     )
 }
