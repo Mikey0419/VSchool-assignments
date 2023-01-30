@@ -113,7 +113,6 @@ function List(props) {
                             addItem(formData.title === '' ? 'Title' : formData.title, formData.description === '' ? 'Description' : formData.description, formData.url === '' ? defaultImage : formData.url);
                             clearForm();
                         } else {
-                            console.log("Updated!");
                             updateItem(itemIndex.id, itemIndex.i, formData.title, formData.description, formData.url);
                             clearForm();
                             setEdit(false);
