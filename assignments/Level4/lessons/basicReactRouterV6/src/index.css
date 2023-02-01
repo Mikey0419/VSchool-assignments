@@ -1,0 +1,36 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 350px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  color: black;
+  padding: 10px 50px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 25%)
+}
+
+a {
+  text-decoration: none;
+  padding: 5px;
+  color: white;
+}
