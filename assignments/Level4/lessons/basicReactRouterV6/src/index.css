@@ -12,7 +12,7 @@ body {
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
+  background-color: #f8f9fc;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -41,16 +41,16 @@ body {
 }
 
 nav {
-  background-color: rgb(255, 255, 255);
+  background-color: #f8f9fc;
   width: 100vw;
   position: relative;
   left: 0;
-  box-shadow: 0px 2px 18px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.15);
 }
 
 a {
   text-decoration: none;
-  padding: 5px;
+  padding: 25px;
   color: rgb(60, 59, 59);
   font-weight: 600;
   transition: color 0.3s linear;
