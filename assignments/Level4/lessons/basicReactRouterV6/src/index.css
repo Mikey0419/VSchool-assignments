@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -5,14 +11,17 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #d8d8d8;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  margin: 0;
+  padding: 0;
 }
 
 .home-container {
@@ -21,16 +30,31 @@
   width: 500px;
   height: 350px;
   background-color: rgb(255, 255, 255);
-  border-radius: 7px;
+  border-radius: 0.5rem;
   color: black;
   padding: 10px 50px;
   position: relative;
   left: 50%;
-  transform: translate(-50%, 25%)
+  transform: translate(-50%, 50%);
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.15);
+}
+
+nav {
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  position: relative;
+  left: 0;
+  box-shadow: 0px 6px 18px 0px rgba(0,0,0,0.15);
 }
 
 a {
   text-decoration: none;
   padding: 5px;
-  color: white;
+  color: rgb(60, 59, 59);
+  font-weight: 600;
+  transition: color 0.3s linear;
+}
+
+a:hover {
+  color: rgb(129, 130, 131);
 }
